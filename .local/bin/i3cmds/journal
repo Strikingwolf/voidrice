@@ -1,0 +1,6 @@
+#!/bin/bash
+
+dir="$HOME/vimwiki/diary"
+[ -z $dir ] && mkdir "$dir"
+file="$dir/$(date +%F).md"
+nvim $file

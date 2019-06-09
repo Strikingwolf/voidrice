@@ -38,3 +38,6 @@ macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandle
 macro w set browser "w3m"; open-in-browser ; set browser linkhandler
 macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
 macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkandler
+urls-source "opml"
+opml-url "https://raw.githubusercontent.com/Strikingwolf/shared/master/opml.xml"
+macro Z open-all-unread-in-browser-and-mark-read
