@@ -17,7 +17,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'LukeSmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'vifm/vifm.vim'
@@ -38,6 +38,7 @@ Plug 'sirver/ultisnips'
 Plug 'kovetskiy/sxhkd-vim'
 call plug#end()
 
+set ignorecase
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -58,7 +59,7 @@ set clipboard=unnamedplus
 
 " Some custom stuff
 	map <leader>x :! xclip -selection clipboard -i %
-
+	map <leader>wc :! wc -w % \| awk '{print $1;}'
 " Some basics:
 	nnoremap c "_c
 	set nocompatible

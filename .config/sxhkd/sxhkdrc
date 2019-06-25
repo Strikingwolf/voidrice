@@ -80,6 +80,16 @@ super + {_,shift +} bracketright
 super + {_,shift +} bracketleft
 	lmc back {10,120}
 
+# Toggle mute
+super + shift + m
+	lmc mute
+
+XF86Audio{Raise,Lower}Volume
+	lmc {up, down} 10
+
+XF86MonBrightness{Down,Up}
+	xbacklight {-dec,-inc} 15
+
 # Function keys
 # Show readme
 super + F1
@@ -115,7 +125,3 @@ super + F11
 # Journal
 super + F12
 	$TERMINAL -e journal
-
-# Restart Sxhkd
-Pause
-	pkill sxhkd && sxhkd
