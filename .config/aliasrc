@@ -26,7 +26,9 @@ alias ka="killall" \
 	lsp="pacman -Qett --color=always | less" \
 	ffmpeg="ffmpeg -hide_banner" \
 	cpng="xclip -selection clipboard -t image/png" \
- 	admintask="pandoc vimwiki/Admin\ Tasks.md -o /tmp/admin.pdf && zathura /tmp/admin.pdf"
+	java8="/usr/lib/jvm/java-8-openjdk/jre/bin/java" \
+ 	admintask="pandoc vimwiki/Admin\ Tasks.md -o /tmp/admin.pdf && zathura /tmp/admin.pdf" \
+	setlocaltime="timedatectl set-timezone \$(curl https://ipapi.co/timezone)"
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 
 vf() { fzf | xargs -r -I % $EDITOR % ;}
