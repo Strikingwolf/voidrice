@@ -55,7 +55,7 @@ set bg=light
 set go=a
 set mouse=a
 set nohlsearch
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 " Some custom stuff
 	map <leader>x :! xclip -selection clipboard -i %
@@ -140,10 +140,6 @@ endfunction
 autocmd BufRead,BufNewFile ~/vimwiki/* map <localleader>c :call ToggleCalendar()
 autocmd BufRead,BufNewFile ~/vimwiki/* map <localleader>d :VimwikiMakeDiaryNote
 autocmd BufRead,BufNewFile ~/vimwiki/* map <localleader>g :VimwikiDiaryGenerateLinks
-
-" Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
-	vnoremap <C-c> "+y
-	map <C-p> "+P
 
 " Enable Goyo by default for mutt writting
 	" Goyo's width will be the line limit in mutt.
