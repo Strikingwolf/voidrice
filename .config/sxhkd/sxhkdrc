@@ -111,9 +111,6 @@ super + {_,shift +} bracketleft
 super + shift + m
 	lmc mute
 
-XF86Audio{Raise,Lower}Volume
-	lmc {up, down} 10
-
 XF86MonBrightness{Down,Up}
 	xbacklight {-dec,-inc} 15
 
