@@ -10,6 +10,7 @@ sc="cd ~/.local/bin && ls -a" \
 mn="cd /mnt && ls -a" \
 b="cd ~/Documents/Books && ls -a" \
 ww="cd ~/Documents/Writing && ls -a" \
+bl="cd ~/Documents/Blog && ls -a" \
 bf="$EDITOR ~/.config/bmfiles" \
 bd="$EDITOR ~/.config/bmdirs" \
 cfb="$EDITOR ~/.bashrc" \

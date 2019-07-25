@@ -23,6 +23,9 @@ larbs.sh
 .w3m
 .bash_history
 
+
+.wallpapers
+.config/wall.png
 .Xauthority
 .Xclients
 .Xresources

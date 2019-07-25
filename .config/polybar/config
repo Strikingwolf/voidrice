@@ -119,7 +119,7 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = i3 xwindow
+modules-left = bspwm i3 xwindow
 modules-center = mpd
 modules-right = journal pavolume battery date
 
@@ -396,7 +396,7 @@ modules-right = filesystem
 ################################################################################
 
 [bar/mainbar-bspwm]
-monitor = ${env:MONITOR}
+;monitor = ${env:MONITOR}
 ;monitor-fallback = HDMI1
 width = 100%
 height = 30
@@ -427,21 +427,22 @@ border-size = 0
 ;border-bottom-size = 25
 border-color = #00000000
 
-padding-left = 0
+padding-left = 1
 padding-right = 1
 
 module-margin-left = 3
 module-margin-right = 3
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "Noto Sans:size=10;0"
-font-1 = "FontAwesome:size=13;0"
-font-2 = "Noto Sans:size=10;0"
-font-3 = "Noto Sans Mono:size=10;0"
+font-0 = "UbuntuMono Nerd Font:size=10;2"
+font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 modules-left = bspwm xwindow
-modules-center = kernel
-modules-right = pavolume memory2 cpu2 date
+modules-center = mpd
+modules-right = journal pavolume battery date
 
 tray-detached = false
 tray-offset-x = 0
@@ -785,35 +786,35 @@ enable-scroll = true
 reverse-scroll = true
 pin-workspaces = true
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-ws-icon-default = " "
 
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
+ws-icon-4 = V;
+ws-icon-5 = VI;
+ws-icon-6 = VII;
+ws-icon-7 = VIII;
+ws-icon-8 = IX;
+ws-icon-9 = X;
+ws-icon-default = " "
 
 format = <label-state> <label-mode>
 
 label-focused = %icon%
 label-focused-background = ${colors.background}
 label-focused-underline= #6790eb
-label-focused-padding = 4
+label-focused-padding = 2
 label-focused-foreground = ${colors.foreground}
 
 label-occupied = %icon%
 label-occupied-padding = 2
 label-occupied-background = ${colors.background}
 
-label-urgent = %icon%
+label-urgent = %icon% %name%
 label-urgent-padding = 2
 
-label-empty = %icon%
+label-empty =
 label-empty-foreground = ${colors.foreground}
 label-empty-padding = 2
 label-empty-background = ${colors.background}
@@ -928,6 +929,20 @@ battery = BAT1
 adapter = ACAD
 full-at = 98
 
+;format-charging-foreground = ${colors.foreground}
+;format-charging-background = ${colors.background}
+;format-discharging-background = ${self.format-charging-background}
+;format-discharging-foreground = ${self.format-charging-foreground}
+;format-full-foreground = ${self.format-charging-foreground}
+;format-full-background = ${self.format-charging-background}
+;
+;label-full =  %percentage% %
+;label-discharging =  %percentage% %
+;
+;format-charging-underline = #3EC13F
+;format-discharging-underline = #dd0048
+;format-full-underline = ${self.format-charging-underline}
+
 format-charging-foreground = ${colors.foreground}
 format-charging-background = ${colors.background}
 format-discharging-background = ${self.format-charging-background}
@@ -935,13 +950,32 @@ format-discharging-foreground = ${self.format-charging-foreground}
 format-full-foreground = ${self.format-charging-foreground}
 format-full-background = ${self.format-charging-background}
 
-label-charging =  %percentage% %
-label-full =  %percentage% %
-label-discharging =  %percentage% %
+poll-interval = 5
 
-format-charging-underline = #3EC13F
-format-discharging-underline = #dd0048
-format-full-underline = ${self.format-charging-underline}
+format-charging = <animation-charging>  <label-charging>
+;format-charging = <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full = <ramp-capacity>  <label-full>
+label-charging =  %percentage% %
+label-discharging = %percentage% %
+label-full = %percentage% %
+;format-charging-padding = 3
+;format-discharging-padding = 3
+;format-full-padding = 3
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
 ################################################################################
 
 [module/compton]

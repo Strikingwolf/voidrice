@@ -2,5 +2,6 @@
 
 [ -f "$HOME/.xprofile" ] && . ~/.xprofile
 
-exec i3
-cbatticon &
+exec bspwm
+
+
