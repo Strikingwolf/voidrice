@@ -23,9 +23,11 @@ super + shift + w
 	$BROWSER
 super + shift + g
 	gimp
-
 super + v
 	$TERMINAL -e $EDITOR -c "VimwikiIndex"
+super + b
+	$HOME/.local/bin/i3cmds/blog
+
 
 # Et cetera...
 super + grave
