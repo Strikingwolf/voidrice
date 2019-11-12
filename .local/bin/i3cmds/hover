@@ -1,8 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 [ -z "$1" ] && exit # If $1 is left, hovers in the bottom left, if right, the bottom right
+
+case $XDG_CURRENT_DESKTOP in
+	bspwm) bspc node -t floating ;;
+	*) echo $XDG_CURRENT_DESKTOP ;;
+esac
+
 current=$(xdotool getwindowfocus)
-newwidth=$(($(xdotool getdisplaygeometry | awk '{print $2}') / 3))
-newheight=$(($(xdotool getdisplaygeometry | awk '{print $1}') / 3))
+newwidth=$(($(xdotool getdisplaygeometry | awk '{print $2}') / 5))
+newheight=$(($(xdotool getdisplaygeometry | awk '{print $1}') / 5))
 xdotool windowsize "$current" $newheight $newwidth
 newsize=$(xdotool getwindowgeometry "$current" | grep Geometry | sed -e 's/x/ /g' | awk '{print $3}')
 newwidth=$(xdotool getwindowgeometry "$current" | grep Geometry | grep -o " [0-9]*")
@@ -10,5 +16,14 @@ newwidth=$(xdotool getwindowgeometry "$current" | grep Geometry | grep -o " [0-9
 case "$1" in
 	left) horizontal=0; vertical=$(($(xdotool getdisplaygeometry | awk '{print $2}') - newsize)) ;;
 	right) horizontal=$(($(xdotool getdisplaygeometry | awk '{print $1}') - newwidth)) ; vertical=$(($(xdotool getdisplaygeometry | awk '{print $2}') - newsize)) ;;
+	topleft) horizontal=0;vertical=30 ;;
+	topright) vertical=30;horizontal=$(($(xdotool getdisplaygeometry | awk '{print $1}') - newwidth)) ;;
 esac
 xdotool windowmove "$current" $horizontal $vertical
+
+
+case $XDG_CURRENT_DESKTOP in
+	bspwm) bspc node -g sticky=on ;;
+	*) echo $XDG_CURRENT_DESKTOP ;;
+esac
+

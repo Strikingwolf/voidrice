@@ -15,13 +15,15 @@ bspc config ignore_ewmh_focus true
 
 bspc rule -a Gimp desktop='^5' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
-bpsc rule -a Firefox desktop='^2'
-bspc rule -a Discord desktop='^3'
+bspc rule -a firefox desktop='^2'
+bspc rule -a discord desktop='^3'
 bspc rule -a mpv state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a Zathura state=tiled
 
 $HOME/.config/polybar/launch.sh &
+
 firefox &
 discord &
-
+$TERMINAL -e "mosh holo@nikky.moe" &

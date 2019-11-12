@@ -1,0 +1,6 @@
+#!/bin/sh
+
+TOOLS="$HOME/.local/bin/tools"
+pkill -f "entr /bin/sh"
+pkill -f "entr notify-send"
+ls "$1" | entr /bin/sh -c "cd $PWD; $TOOLS/compiler $1" > /dev/null
