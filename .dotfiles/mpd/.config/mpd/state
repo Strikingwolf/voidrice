@@ -1,0 +1,53 @@
+sw_volume: 100
+audio_device_state:1:pulse audio
+audio_device_state:1:toggle_visualizer
+state: stop
+current: 1
+random: 1
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:invent-the-universe/01-Sithu Aye - Invent the Universe.mp3
+1:invent-the-universe/02-Sithu Aye - Grand Unification (feat. David Maxim Micic).mp3
+2:invent-the-universe/03-Sithu Aye - Expansion.mp3
+3:invent-the-universe/04-Sithu Aye - Baryogenesis.mp3
+4:invent-the-universe/05-Sithu Aye - Particles Collide (feat. Plini).mp3
+5:invent-the-universe/06-Sithu Aye - Nucleosynthesis (Interlude).mp3
+6:invent-the-universe/07-Sithu Aye - Recombination.mp3
+7:invent-the-universe/08-Sithu Aye - Dark Ages.mp3
+8:invent-the-universe/09-Sithu Aye - Formation.mp3
+9:invent-the-universe/10-Sithu Aye - Pale Blue Dot.mp3
+10:senpai-ep-ep/2-Sithu Aye - Senpai, Please Notice Me! (先輩、私に気付いて下さい！).mp3
+11:set-course-for-andromeda/02-Sithu Aye - Set Course for Andromeda!!!.mp3
+12:homebound/3-Sithu Aye - Grand Order.mp3
+13:set-course-for-andromeda/01-Sithu Aye - Space Cadet.mp3
+14:senpai-ep-ep/3-Sithu Aye - The Power of Love and Friendship! (愛と友情のパワー! ).mp3
+15:homebound/3-Sithu Aye - Grand Order.mp3
+16:homebound/4-Sithu Aye - Holograph.mp3
+17:homebound/5-Sithu Aye - Runaway Reaction.mp3
+18:homebound/6-Sithu Aye - Journey.mp3
+19:homebound/7-Sithu Aye - Footsteps.mp3
+20:homebound/8-Sithu Aye - Homebound.mp3
+21:homebound/9-Sithu Aye - Galaxies Collide.mp3
+22:BurningRumTea.m4a
+23:i/1-Plini - Plini - Orm.mp3
+24:i/2-Plini - Plini - Rupture.mp3
+25:i/3-Sithu Aye - Sithu Aye - Solstice.mp3
+26:i/4-Sithu Aye - Sithu Aye - Moonrise.mp3
+27:i/1-Plini - Plini - Orm.mp3
+28:i/2-Plini - Plini - Rupture.mp3
+29:i/3-Sithu Aye - Sithu Aye - Solstice.mp3
+30:i/4-Sithu Aye - Sithu Aye - Moonrise.mp3
+31:clean-me-up-rinse-me-out-ep/1-Christa Lee - bilinear filtering.mp3
+32:clean-me-up-rinse-me-out-ep/3-Christa Lee - dancing in the interim.mp3
+33:clean-me-up-rinse-me-out-ep/4-Christa Lee - self care, self repair.mp3
+34:clean-me-up-rinse-me-out-ep/2-Christa Lee - a pleasant cruise.mp3
+35:in-the-realm-of-the-senses-ep/3-Christa Lee - peel.mp3
+36:senpai-ep-ii-the-noticing/1-Sithu Aye - Summer Break! (夏休み!).mp3
+37:winners-circle/09-SHOPPING WORLD JP - SHOPPING WORLD JP - PRISM PROGRAM.aiff
+38:senpai-ep-ii-the-noticing/2-Sithu Aye - It's the Second Season, So We Need a New Character After All! (もう2クール目だし、新キャラ登場させなきゃね！).mp3
+playlist_end
