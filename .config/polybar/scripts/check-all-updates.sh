@@ -1,1 +1,0 @@
-../../../.dotfiles/polybar/.config/polybar/scripts/check-all-updates.sh
