@@ -1,2 +1,1 @@
-#!/bin/bash
-echo "${USER^}"
+../../../.dotfiles/polybar/.config/polybar/scripts/kernel.sh
