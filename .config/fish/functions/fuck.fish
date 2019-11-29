@@ -1,4 +1,1 @@
-# Defined in - @ line 0
-function fuck --description 'alias fuck=sudo'
-	sudo  $argv;
-end
+../../../.dotfiles/fish/.config/fish/functions/fuck.fish

@@ -1,3 +1,1 @@
-function fish_user_key_bindings
-	fish_vi_key_bindings
-end
+../../../.dotfiles/fish/.config/fish/functions/fish_user_key_bindings.fish

@@ -1,3 +1,1 @@
-function vf
-	fzf | xargs -r -I % $EDITOR %
-end
+../../../.dotfiles/fish/.config/fish/functions/vf.fish
