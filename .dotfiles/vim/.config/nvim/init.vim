@@ -31,8 +31,7 @@ Plug 'mattn/calendar-vim'
 Plug 'lervag/vimtex'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
-
-
+Plug 'tpope/vim-dispatch'
 
 call plug#end()
 
@@ -91,8 +90,7 @@ set clipboard+=unnamedplus
 	nnoremap S :%s//g<Left><Left>
 
 " Autocompile
-
-	map <leader>a :! setsid nohup autoconf <c-r>%<CR>
+	noremap <leader>a :call jobstart('autocomp '.expand('%').'')<CR>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
