@@ -8,6 +8,7 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/goyo.vim'
@@ -32,8 +33,26 @@ Plug 'lervag/vimtex'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'christoomey/vim-titlecase'
 Plug 'tpope/vim-dispatch'
+Plug 'KeitaNakamura/tex-conceal.vim'
 
 call plug#end()
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+setlocal spell
+set spelllang=en_us
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+setlocal nospell
 
 set bg=light
 set go=a
@@ -55,6 +74,7 @@ set clipboard+=unnamedplus
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
+
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -91,6 +111,9 @@ set clipboard+=unnamedplus
 
 " Autocompile
 	noremap <leader>a :call jobstart('autocomp '.expand('%').'')<CR>
+
+" Open Logs for Documents
+	noremap <leader>l :vsplit \| e %:r.log \| normal /! <c-v><c-m> <CR>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
