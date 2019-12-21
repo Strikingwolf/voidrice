@@ -34,26 +34,48 @@ mountandroid() { \
 	notify-send "🤖 Android Mounting" "Android device mounted to $mp."
 	}
 
+mountsftp() { \
+	chosen="$(echo "$sftpdrives" | dmenu -i -p "Mount which drive?")"
+	getmount "/home/faye/mnt /mnt /home -maxdepth 5 -type d"
+	remotemp="$(dmenu -i -p "At what directory?")"
+	notify-send "💻 SFTP mounting"
+	# user="$(whoami)"
+	# ug="$(groups | awk '{print $1}')"
+	# sudo -A SSH_ASKPASS="$SSH_ASKPASS" sshfs -F "$HOME/.ssh/config" "$chosen:$remotemp" $mp; sudo -A chown "$user":"$ug" "$mp"
+	sshfs "$chosen:$remotemp" $mp
+ 	notify-send "$chosen:$remotemp mounted to $mp."
+}
+
 asktype() { \
-	case $(printf "USB\\nAndroid" | dmenu -i -p "Mount a USB drive or Android device?") in
+	case $(printf "USB\\nAndroid\\nSFTP" | dmenu -i -p "Mount a USB drive or Android device?") in
 		USB) mountusb ;;
 		Android) mountandroid ;;
+		SFTP) mountsftp ;;
 	esac
 	}
 
 anddrives=$(simple-mtpfs -l 2>/dev/null)
 usbdrives="$(lsblk -rpo "name,type,size,mountpoint" | awk '$2=="part"&&$4==""{printf "%s (%s)\n",$1,$3}')"
+sftpdrives=$(sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' $HOME/.ssh/config)
 
 if [ -z "$usbdrives" ]; then
-	[ -z "$anddrives" ] && echo "No USB drive or Android device detected" && exit
-	echo "Android device(s) detected."
-	mountandroid
+	if [ -z "$anddrives" ]; then
+		[ -z "$sftpdrives" ] && echo "No USB drive, Android device, or sftp drive detected" && exit
+		echo "SFTP Drive Detected"
+		mountsftp
+	else
+		[ -z "$sftpdrives" ] && echo "Android Device detected" && mountandroid && exit
+		echo "SFTP drive and Android Device detected"
+		asktype
+	fi
 else
 	if [ -z "$anddrives" ]; then
-		echo "USB drive(s) detected."
-	       	mountusb
+		[ -z "$sftpdrives" ] && echo "USB drive(s) detected." && mountusb && exit
+		[ -z "$sftpdrives" ] || echo "USB drives and SFTP drives detected"
+		asktype
 	else
-		echo "Mountable USB drive(s) and Android device(s) detected."
+		[ -z "sftpdrives" ] && echo "Mountable USB drive(s), Android device(s), and SFTP devices(s) detected."
+		[ -z "sftpdrives" ] || echo "Mountable USB drive(s) and Android device(s) detected."
 		asktype
 	fi
 fi

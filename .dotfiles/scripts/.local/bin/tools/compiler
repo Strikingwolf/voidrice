@@ -14,12 +14,17 @@ cd "$dir" || exit
 textype() { \
 	command="pdflatex"
 	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
-	$command --output-directory="$dir" "$base" &&
-	grep -i addbibresource "$file" >/dev/null &&
-	biber --input-directory "$dir" "$base" &&
-	$command --output-directory="$dir" "$base" &&
-	$command --output-directory="$dir" "$base"
-	}
+	runbib=$(grep -i addbibresource "$file")
+	if [ -z $runbib ]
+	then
+		$command --output-directory="$dir" "$base"
+	else
+		$command --output-directory="$dir" "$base" && \
+			biber --input-directory "$dir" "$base" && \
+			$command --output-directory="$dir" "$base" && \
+			$command --output-directory="$dir" "$base"
+	fi
+}
 
 case "$file" in
 	*\.ms) refer -PS -e "$file" | groff -me -ms -kept -T pdf > "$base".pdf ;;

@@ -1,5 +1,6 @@
+# Defined in /tmp/fish.6sFJDn/ripcamp.fish @ line 2
 function ripcamp
-	set LST (wget -qO- https://$argv[1].bandcamp.com/music | grep -oP '(?<=album/).*?(?=&quot;)')
+	set LST (wget -qO- https://$argv[1].bandcamp.com/music | grep -oP '(?<=album/).*?(?=")')
 for i in $LST
 mkdir $i
 cd $i
