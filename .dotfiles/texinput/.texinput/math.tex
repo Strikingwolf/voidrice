@@ -1,0 +1,119 @@
+% This is some more standard set-up stuff.
+% You probably won't need to change it.
+\newtheorem{thm}{Theorem}
+\newtheorem{exer}{Exercise}
+\newtheorem{defn}{Definition}
+\newtheorem{lemma}{Lemma}
+\crefname{lemma}{Lemma}{Lemmas}
+\newtheorem{cor}{Corrolary}
+\newtheorem{rmk}{Remark}
+\newtheorem{rcl}{Recall}
+\newtheorem{clm}{Claim}
+\newtheorem{ex}{Example}
+\newtheorem{nex}{Non-Example}
+
+\renewcommand*{\thermk}{\!\!}
+\renewcommand*{\thercl}{\!\!}
+\renewcommand*{\theclm}{\!\!}
+\renewcommand*{\theex}{\!\!}
+\renewcommand*{\thenex}{\!\!}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\T}{\mathscr{T}}
+\newcommand{\C}{\mathscr{C}}
+\newcommand{\OP}{\mathscr{O}}
+\newcommand{\V}{\mathcal{V}}
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\ps}{\mathcal{P}}
+\newcommand{\twodef}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4
+		\end{array}
+	\right.
+}
+\newcommand{\threedef}[6]
+{
+	\left\{
+		\begin{array}{lll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6
+		\end{array}
+	\right.
+}
+
+\newcommand{\quadform}[3]
+{
+	\frac{#2 \pm \sqrt{#2^2 - 4\left(#1\right)\left(#3\right)} }{2\left(#1\right)}
+}
+
+\newcommand{\quadformp}[3]
+{
+	\frac{#2 + \sqrt{#2^2 - 4\left(#1\right)\left(#3\right)} }{2\left(#1\right)}
+}
+
+\newcommand{\quadformm}[3]
+{
+	\frac{#2 - \sqrt{#2^2 - 4\left(#1\right)\left(#3\right)} }{2\left(#1\right)}
+}
+
+
+\newcommand{\0}{\emptyset}
+\newcommand{\ifft}{if and only if }
+\newcommand{\sided}[2]{\, \\ ($\Rightarrow$) #1 \\ ($\Leftarrow$) #2}
+\newcommand{\e}{\varepsilon}
+% \renewcommand*{\e}{{\frownie{}}}
+\newcommand{\de}{\delta}
+% \renewcommand*{\de}{{\smiley{}}}
+\newcommand{\al}{\alpha}
+\newcommand{\st}{\;\vert\;}
+\newcommand{\g}{\gamma}
+\renewcommand*{\d}{\mathop{}\!\mathrm{d}}
+\renewcommand*{\bar}[1]{\overline{#1}}
+
+\newcommand{\parens}[1]{\left(#1\right)}
+\newcommand{\homo}{homomorphism\xspace}
+
+\newcommand{\ld}{\left}
+\newcommand{\rd}{\right}
+\newcommand{\inc}[1]{\xhookrightarrow{#1}}
+\newcommand{\iso}{\cong}
+\newcommand{\rest}[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+\newcommand{\tri}{\overset{\triangle}{\leq}}
+
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\INT}{int}
+
+\newcommand{\ball}[2]{\mathcal{B}_{#1}\left(#2\right)}
+
+\let\oldexer\theexer
+\newcommand{\theexerAraAlph}{\bf{\arabic{problem}\alph{exer}}}
+\newcommand{\theexerAra}{\bf{\arabic{problem}}}
+\newcommand{\theexerAraRom}{\bf{\arabic{problem}\roman{exer}}}
+\newcommand{\theexerAraNew}{\bf{\arabic{exer}}}
+
+\newcommand{\exAra}{\renewcommand*{\theexer}{\theexerAra}}
+\newcommand{\exAraAlph}{\renewcommand*{\theexer}{\theexerAraAlph}}
+\newcommand{\exAraRom}{\renewcommand*{\theexer}{\theexAraRom}}
+
+\renewcommand*{\theexer}{\theexerAraNew}
+
+\newcounter{prob}
+\setcounter{prob}{1}
+\newcommand{\nextprob}{\stepcounter{prob} \setcounter{exer}{0}}
