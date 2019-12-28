@@ -87,4 +87,4 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 # More Optional kinds of things
 ,entr,"Automation tool"
 ,sshfs,"Mount Filesystems from the Network"
-,mosh,"Good
+,mosh,"Good SSH frontend drop-in-replacement"
