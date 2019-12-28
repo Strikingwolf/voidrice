@@ -3,6 +3,8 @@
 
 # Adds `~/.local/bin/` and all subdirectories to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+export PATH="$PATH:$(du "$HOME/Games/Steam/steamapps/common" --max-depth 1 | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
@@ -14,6 +16,7 @@ export SUDO_ASKPASS="$HOME/.local/bin/tools/dmenupass"
 export SSH_ASKPASS=$SUDO_ASKPASS
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export TEX_INPUT="$HOME/.texinput"
 
 export XDG_CURRENT_DESKTOP="bspwm"
 

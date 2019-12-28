@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -f "$1" ] && [ -f "$2" ]; then
+	cp $1 $2
+	echo "$1" | entr /bin/cp /_ $2
+elif [ -f "$1" ]; then
+	echo "Given a file ($1) and a directory ($2) (, match the types properly"
+elif [ -f "$2" ]; then
+	echo "Given a file ($2) and a directory ($1) (, match the types properly"
+else
+	find $1 -mindepth 1 -exec /bin/cp -r {} $2 \;
+	find $1 -mindepth 1 | entr /bin/cp -r /_ $2
+fi

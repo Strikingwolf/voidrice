@@ -48,17 +48,21 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-setlocal spell
-set spelllang=en_us
+let g:pandoc#spell#enabled=0
+
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-setlocal nospell
+set tabstop=4
+set shiftwidth=4
 
 set bg=light
 set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+
+" Fix spelling
+	au BufNewFile,BufReadPost,FilterReadPost,FileReadPost  * set nospell
 
 " Some basics:
 	nnoremap c "_c
@@ -154,3 +158,5 @@ set clipboard+=unnamedplus
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
+	"hkjda

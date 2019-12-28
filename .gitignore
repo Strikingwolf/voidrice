@@ -2,3 +2,4 @@
 !.dotfiles/
 !.dotfiles/**
 !.gitignore
+!progs.csv

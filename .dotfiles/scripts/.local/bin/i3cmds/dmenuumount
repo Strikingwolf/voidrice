@@ -23,7 +23,7 @@ unmountsftp() { \
 }
 
 asktype() { \
-	case "$(printf "USB\\nAndroid" | dmenu -i -p "Unmount a USB drive or Android device?")" in
+	case "$(printf "USB\\nAndroid\\nSFTP" | dmenu -i -p "Unmount a USB drive or Android device?")" in
 		USB) unmountusb ;;
 		Android) unmountandroid ;;
 		SFTP) unmountsftp ;;

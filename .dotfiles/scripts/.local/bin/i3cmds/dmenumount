@@ -36,7 +36,7 @@ mountandroid() { \
 
 mountsftp() { \
 	chosen="$(echo "$sftpdrives" | dmenu -i -p "Mount which drive?")"
-	getmount "/home/faye/mnt /mnt /home -maxdepth 5 -type d"
+	getmount "/home/faye/mnt -maxdepth 5 -type d $alreadymounted"
 	remotemp="$(dmenu -i -p "At what directory?")"
 	notify-send "💻 SFTP mounting"
 	# user="$(whoami)"
