@@ -26,4 +26,4 @@ $HOME/.config/polybar/launch.sh &
 
 firefox &
 discord &
-$TERMINAL -e "mosh holo@nikky.moe" &
+$TERMINAL &

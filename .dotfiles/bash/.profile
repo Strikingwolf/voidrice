@@ -16,7 +16,14 @@ export SUDO_ASKPASS="$HOME/.local/bin/tools/dmenupass"
 export SSH_ASKPASS=$SUDO_ASKPASS
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+
 export TEX_INPUT="$HOME/.texinput"
+export VIDEOS="$HOME/Media/Videos/"
+export AUDIO="$HOME/Media/Music/"
+export BOOKS="$HOME/Documents/Books/"
+export HMWK="$HOME/Documents/Homework/02-Semester/"
+export TORRENTS="/var/lib/transmission/Downloads/"
+export DOWNLOADS="$HOME/Downloads/"
 
 export XDG_CURRENT_DESKTOP="bspwm"
 

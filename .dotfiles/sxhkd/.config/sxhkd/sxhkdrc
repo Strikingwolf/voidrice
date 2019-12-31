@@ -23,10 +23,15 @@ super + shift + w
 	$BROWSER
 super + shift + g
 	gimp
-super + v
+super + shift + v
 	$TERMINAL -e $EDITOR -c "VimwikiIndex"
+super + v
+	playvideo $VIDEOS
 super + b
-	$HOME/.local/bin/i3cmds/blog
+	pickbook $BOOKS
+	# $HOME/.local/bin/i3cmds/blog
+super + alt + t
+	placeit $TORRENTS "mv"
 super + alt + m
 	$TERMINAL -e ncmpcpp
 
