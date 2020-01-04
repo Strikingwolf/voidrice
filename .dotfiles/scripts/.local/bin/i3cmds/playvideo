@@ -1,3 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-find -L $1 -type f | grep -v -E ".*\.(part|ytdl)\$" | sort | dmenu -i -l 10 | sed 's| |\\\ |g' | xargs -I "%" mpv "%"
+file=$(find -L $1 -type f | grep -v -E ".*\.(part|ytdl)\$" | sort | dmenu -i -l 10 | sed 's| |\\\ |g')
+
+echo $file
+
+[ -z $file ] && exit
+mpv "$file"

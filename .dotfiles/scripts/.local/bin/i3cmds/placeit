@@ -6,6 +6,8 @@ where=$(printf $locations | dmenu -i -l 10)
 
 opt=$2
 
+[ -z $tomove ] || [ -z $where ] && exit
+
 doit() { \
 	case "$opt" in
 		"mv") mv "$tomove" "$where" ;;

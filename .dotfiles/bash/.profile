@@ -1,7 +1,7 @@
 #!/bin/bash
 # Profile file. Runs on login.
 
-# Adds `~/.local/bin/` and all subdirectories to $PATH
+#Adds `~/.local/bin/` and all subdirectories to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$PATH:$(du "$HOME/Games/Steam/steamapps/common" --max-depth 1 | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
@@ -24,6 +24,8 @@ export BOOKS="$HOME/Documents/Books/"
 export HMWK="$HOME/Documents/Homework/02-Semester/"
 export TORRENTS="/var/lib/transmission/Downloads/"
 export DOWNLOADS="$HOME/Downloads/"
+
+export BAT="BAT1"
 
 export XDG_CURRENT_DESKTOP="bspwm"
 
