@@ -3,3 +3,4 @@
 !.dotfiles/**
 !.gitignore
 !progs.csv
+!LICENSE
