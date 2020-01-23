@@ -34,6 +34,8 @@ super + alt + t
 	placeit $TORRENTS "mv"
 super + alt + m
 	$TERMINAL -e ncmpcpp
+super + space
+	pickhmwk $HMWK
 
 # Corner Windows
 super + shift + {n,b}

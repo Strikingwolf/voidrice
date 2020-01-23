@@ -24,6 +24,7 @@ export BOOKS="$HOME/Documents/Books/"
 export HMWK="$HOME/Documents/Homework/02-Semester/"
 export TORRENTS="/var/lib/transmission/Downloads/"
 export DOWNLOADS="$HOME/Downloads/"
+export REPOS="$HOME/Documents/Repos"
 
 export BAT="BAT1"
 

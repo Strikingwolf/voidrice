@@ -1,3 +1,5 @@
+\setlength{\fboxrule}{1pt}
+
 % This is some more standard set-up stuff.
 % You probably won't need to change it.
 \newtheorem{thm}{Theorem}
@@ -6,11 +8,28 @@
 \newtheorem{lemma}{Lemma}
 \crefname{lemma}{Lemma}{Lemmas}
 \newtheorem{cor}{Corrolary}
+
+\newtheorem{prop}{Proposition}
+\let\oldprop\prop
+\renewcommand{\prop}{\oldprop\normalfont}
+
 \newtheorem{rmk}{Remark}
+\let\oldrmk\rmk
+\renewcommand{\rmk}{\oldrmk\normalfont}
+
 \newtheorem{rcl}{Recall}
+\let\oldrcl\rcl
+\renewcommand{\rcl}{\oldrcl\normalfont}
+
 \newtheorem{clm}{Claim}
+
 \newtheorem{ex}{Example}
+\let\oldex\ex
+\renewcommand{\ex}{\oldex\normalfont}
+
 \newtheorem{nex}{Non-Example}
+\let\oldnex\nex
+\renewcommand{\nex}{\oldnex\normalfont}
 
 \renewcommand*{\thermk}{\!\!}
 \renewcommand*{\thercl}{\!\!}
@@ -69,15 +88,16 @@
 \newcommand{\0}{\emptyset}
 \newcommand{\ifft}{if and only if }
 \newcommand{\sided}[2]{\, \\ ($\Rightarrow$) #1 \\ ($\Leftarrow$) #2}
+\newcommand{\twowaycont}[2]{\, \\ ($\subseteq$) #1 \\ ($\supseteq$) #2}
 \newcommand{\e}{\varepsilon}
 % \renewcommand*{\e}{{\frownie{}}}
 \newcommand{\de}{\delta}
 % \renewcommand*{\de}{{\smiley{}}}
 \newcommand{\al}{\alpha}
-\newcommand{\st}{\;\vert\;}
+\renewcommand*{\st}{\;\vert\;}
 \newcommand{\g}{\gamma}
 \renewcommand*{\d}{\mathop{}\!\mathrm{d}}
-\renewcommand*{\bar}[1]{\overline{#1}}
+\renewcommand{\bar}[1]{\overline{#1}}
 
 \newcommand{\parens}[1]{\left(#1\right)}
 \newcommand{\homo}{homomorphism\xspace}
@@ -103,14 +123,14 @@
 \newcommand{\ball}[2]{\mathcal{B}_{#1}\left(#2\right)}
 
 \let\oldexer\theexer
-\newcommand{\theexerAraAlph}{\bf{\arabic{problem}\alph{exer}}}
-\newcommand{\theexerAra}{\bf{\arabic{problem}}}
-\newcommand{\theexerAraRom}{\bf{\arabic{problem}\roman{exer}}}
+\newcommand{\theexerAraAlph}{\bf{\arabic{prob}\alph{exer}}}
+\newcommand{\theexerAra}{\bf{\arabic{prob}}}
+\newcommand{\theexerAraRom}{\bf{\arabic{prob}\roman{exer}}}
 \newcommand{\theexerAraNew}{\bf{\arabic{exer}}}
 
 \newcommand{\exAra}{\renewcommand*{\theexer}{\theexerAra}}
 \newcommand{\exAraAlph}{\renewcommand*{\theexer}{\theexerAraAlph}}
-\newcommand{\exAraRom}{\renewcommand*{\theexer}{\theexAraRom}}
+\newcommand{\exAraRom}{\renewcommand*{\theexer}{\theexerAraRom}}
 
 \renewcommand*{\theexer}{\theexerAraNew}
 
@@ -118,4 +138,10 @@
 \setcounter{prob}{1}
 \newcommand{\nextprob}{\stepcounter{prob} \setcounter{exer}{0}}
 
+\newcommand{\introprob}[1]{\exAra \begin{exer} #1 \end{exer} \exAraAlph \setcounter{exer}{0}}
 
+\newcommand{\PHP}{Pigeonhole Principle\xspace}
+\newcommand{\GPHP}{The Generalized \PHP}
+
+\newcommand{\unif}{\xrightarrow{unif.}}
+\newcommand{\ptwise}{\xrightarrow{ptwise.}}

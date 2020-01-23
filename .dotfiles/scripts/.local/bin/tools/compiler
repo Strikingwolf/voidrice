@@ -40,5 +40,6 @@ case "$file" in
 	*\.py) python "$file" ;;
 	*\.go) go run "$file" ;;
 	*\.sent) setsid sent "$file" 2>/dev/null & ;;
+	*\.pde) processing-java --sketch=$(echo "$file" | sed 's|/[^/]*$|/|') --run ;;
 	*) sed 1q "$file" | grep "^#!/" | sed "s/^#!//" | xargs -r -I % "$file" ;;
 esac

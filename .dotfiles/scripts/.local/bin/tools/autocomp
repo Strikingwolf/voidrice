@@ -1,6 +1,7 @@
 #!/bin/sh
 
+PIDBOI="$$"
 TOOLS="$HOME/.local/bin/tools"
-pkill -f "entr /bin/sh"
-pkill -f "entr notify-send"
+pgrep -f "/bin/sh $TOOLS/autocomp $1" | grep -v "$PIDBOI" | xargs kill
+pkill -f "entr /bin/sh -c cd $PWD; $TOOLS/compiler $1"
 ls "$1" | entr /bin/sh -c "cd $PWD; $TOOLS/compiler $1" > /dev/null
