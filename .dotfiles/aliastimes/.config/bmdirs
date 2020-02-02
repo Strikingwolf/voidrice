@@ -1,14 +1,14 @@
 # You can add comments to these files with #
 h	~/
-H	~/Documents/Homework
-d	~/Documents
-D	~/Downloads
-m	~/Music
-pp	~/Pictures
-vv	~/Videos
+H	$HMWK
+d	$DOCUMENTS
+D	$Downloads
+m	$AUDIO
+pp	~/Media/Pictures
+vv	$VIDEOS
 cf	~/.config
 sc	~/.local/bin
 mn	/mnt
-b	~/Documents/Books
+b	$BOOKS
 ww	~/Documents/Writing
 bl	~/Documents/Blog
