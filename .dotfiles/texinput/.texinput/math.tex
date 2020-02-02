@@ -21,6 +21,10 @@
 \let\oldrcl\rcl
 \renewcommand{\rcl}{\oldrcl\normalfont}
 
+\newtheorem{obsv}{Observe}
+\let\oldobsv\obsv
+\renewcommand{\obsv}{\oldobsv\normalfont}
+
 \newtheorem{clm}{Claim}
 
 \newtheorem{ex}{Example}
@@ -44,8 +48,10 @@
 \newcommand{\U}{\mathcal{U}}
 \newcommand{\T}{\mathscr{T}}
 \newcommand{\C}{\mathscr{C}}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\OP}{\mathscr{O}}
 \newcommand{\V}{\mathcal{V}}
+\newcommand{\D}{\mathbb{D}}
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\ps}{\mathcal{P}}
@@ -58,6 +64,16 @@
 		\end{array}
 	\right.
 }
+\newcommand{\twodefo}[3]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{otherwise }
+		\end{array}
+	\right.
+}
+
 \newcommand{\threedef}[6]
 {
 	\left\{
@@ -119,6 +135,8 @@
 \DeclareMathOperator{\Ima}{Im}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\INT}{int}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\code}{code}
 
 \newcommand{\ball}[2]{\mathcal{B}_{#1}\left(#2\right)}
 
