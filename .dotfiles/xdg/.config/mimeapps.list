@@ -5,6 +5,8 @@ application/torrent=torrent.desktop
 x-scheme-handler/mailto=mail.desktop;
 text/plain=text.desktop;
 text/x-shellscript=text.desktop;
+text/x-tex=text.desktop
+text/x-c++=text.desktop
 application/pdf=pdf.desktop;
 image/png=img.desktop;
 image/jpeg=img.desktop;
@@ -22,6 +24,7 @@ application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 inode/directory=lf.desktop
+inode/x-empty=text.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;

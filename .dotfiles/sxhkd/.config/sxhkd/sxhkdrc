@@ -36,6 +36,8 @@ super + alt + m
 	$TERMINAL -e ncmpcpp
 super + space
 	pickhmwk $HMWK
+super + shift + p
+	picker $HOME
 
 # Corner Windows
 super + shift + {n,b}

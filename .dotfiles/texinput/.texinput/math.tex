@@ -52,6 +52,7 @@
 \newcommand{\OP}{\mathscr{O}}
 \newcommand{\V}{\mathcal{V}}
 \newcommand{\D}{\mathbb{D}}
+\newcommand{\F}{\mathbb{F}}
 
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \newcommand{\ps}{\mathcal{P}}
@@ -103,8 +104,14 @@
 
 \newcommand{\0}{\emptyset}
 \newcommand{\ifft}{if and only if }
-\newcommand{\sided}[2]{\, \\ ($\Rightarrow$) #1 \\ ($\Leftarrow$) #2}
-\newcommand{\twowaycont}[2]{\, \\ ($\subseteq$) #1 \\ ($\supseteq$) #2}
+\newcommand{\sided}[2]{\begin{itemize}
+							\item[($\Rightarrow$)] #1
+							\item[($\Leftarrow$)] #2
+				\end{itemize}}
+\newcommand{\twowaycont}[2]{\begin{itemize}
+		\item[($\subseteq$)] #1
+		\item[($\supseteq$)] #2
+				\end{itemize}}
 \newcommand{\e}{\varepsilon}
 % \renewcommand*{\e}{{\frownie{}}}
 \newcommand{\de}{\delta}
@@ -137,6 +144,7 @@
 \DeclareMathOperator{\INT}{int}
 \DeclareMathOperator{\inv}{inv}
 \DeclareMathOperator{\code}{code}
+\DeclareMathOperator{\charr}{char}
 
 \newcommand{\ball}[2]{\mathcal{B}_{#1}\left(#2\right)}
 
