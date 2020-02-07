@@ -1,0 +1,18 @@
+
+\let\oldexer\theexer
+\newcommand{\theexerAraAlph}{\bf{\arabic{prob}\alph{exer}}}
+\newcommand{\theexerAra}{\bf{\arabic{prob}}}
+\newcommand{\theexerAraRom}{\bf{\arabic{prob}\roman{exer}}}
+\newcommand{\theexerAraNew}{\bf{\arabic{exer}}}
+
+\newcommand{\exAra}{\renewcommand*{\theexer}{\theexerAra}}
+\newcommand{\exAraAlph}{\renewcommand*{\theexer}{\theexerAraAlph}}
+\newcommand{\exAraRom}{\renewcommand*{\theexer}{\theexerAraRom}}
+
+\renewcommand*{\theexer}{\theexerAraNew}
+
+\newcounter{prob}
+\setcounter{prob}{1}
+\newcommand{\nextprob}{\stepcounter{prob} \setcounter{exer}{0}}
+
+\newcommand{\introprob}[1]{\exAra \begin{exer} #1 \end{exer} \exAraAlph \setcounter{exer}{0}}
