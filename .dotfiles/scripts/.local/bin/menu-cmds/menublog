@@ -1,0 +1,9 @@
+#!/bin/bash
+
+file=$(echo "" | $MENU -p "Post Name")
+BLOG=$HOME/Documents/Blog
+
+cd $BLOG
+hugo new "$file.md"
+$TERMINAL -e $EDITOR "$BLOG/content/$file.md"
+

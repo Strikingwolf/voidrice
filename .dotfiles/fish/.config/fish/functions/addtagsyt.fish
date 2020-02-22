@@ -3,7 +3,7 @@ function addtagsyt
 	set -l artist $argv[1]
 	set -l sep $argv[2]
 	set -l pwd $PWD
-	set -l run (printf "Yes\nNo" | dmenu -p "Run This Program in $PWD ?")
+	set -l run (printf "Yes\nNo" | $MENU -p "Run This Program in $PWD ?")
 
 	if test run = "No"
 		exit

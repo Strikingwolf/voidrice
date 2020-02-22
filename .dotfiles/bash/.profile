@@ -5,6 +5,9 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$PATH:$(du "$HOME/Games/Steam/steamapps/common" --max-depth 1 | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 
+export DISPLAY=:0
+
+
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
@@ -40,6 +43,11 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"; a="${a%_}"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"; a="${a%_}"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"; a="${a%_}"
 
+export MOSH_ESCAPE_KEY="<F13>"
+
+export MENU="menu"
+export MENU_RUN="menurun"
+
 mpd >/dev/null 2>&1 &
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
@@ -47,7 +55,7 @@ mpd >/dev/null 2>&1 &
 echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc"
 
 # Start graphical server if i3 not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx -- :0
 
 # Switch escape and caps if tty:
 sudo -n loadkeys ~/.local/bin/ttymaps.kmap 2>/dev/null

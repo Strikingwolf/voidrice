@@ -9,6 +9,8 @@ xmodmap -e 'keycode 135 = Super_R' &
 xset r rate 300 50 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
 xcompmgr &		# xcompmgr for transparency
+#picom &
 dunst &			# dunst for notifications
 mpdupdate &
 numlockx on &
+wal -s -t -R -e &

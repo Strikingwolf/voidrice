@@ -1,0 +1,7 @@
+#!/bin/bash
+
+file=$(find $1 -type d -path '*/\.*' -prune -o -not -name '.*' | grep -v "vimundo" | $MENU -i -l 10 | sed 's| |\\\ |g')
+
+[ -z $file ] && exit
+[ -d $file ] && picker $file
+[ -d $file ] || xdg-open "$file"

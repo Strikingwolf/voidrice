@@ -1,0 +1,8 @@
+#!/bin/bash
+
+file=$(find $1 -type f | grep -E ".*\.(djvu|pdf)\$" | sort | $MENU -i -l 10 | sed 's| |\\\ |g')
+
+echo $file
+
+[ -z $file ] && exit
+zathura "$file"

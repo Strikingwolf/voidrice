@@ -1,0 +1,81 @@
+#!/bin/sh
+# Gives a dmenu prompt to mount unmounted drives.
+# If they're in /etc/fstab, they'll be mounted automatically.
+# Otherwise, you'll be prompted to give a mountpoint from already existsing directories.
+# If you input a novel directory, it will prompt you to create that directory.
+
+getmount() { \
+	[ -z "$chosen" ] && exit 1
+	mp="$(find $1 2>/dev/null | $MENU -i -p "Type in mount point.")"
+	[ "$mp" = "" ] && exit 1
+	if [ ! -d "$mp" ]; then
+		mkdiryn=$(printf "No\\nYes" | $MENU -i -p "$mp does not exist. Create it?")
+		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || sudo -A mkdir -p "$mp")
+	fi
+	}
+
+mountusb() { \
+	chosen="$(echo "$usbdrives" | $MENU -i -p "Mount which drive?" | awk '{print $1}')"
+	sudo -A mount "$chosen" 2>/dev/null && notify-send "💻 USB mounting" "$chosen mounted." && exit 0
+	alreadymounted=$(lsblk -nrpo "name,type,mountpoint" | awk '$2=="part"&&$3!~/\/boot|\/home$|SWAP/&&length($3)>1{printf "-not \\( -path *%s -prune \\) \\ \n",$3}')
+	getmount "/mnt /media /mount /home -maxdepth 5 -type d $alreadymounted"
+	partitiontype="$(lsblk -no "fstype" "$chosen")"
+	case "$partitiontype" in
+		"vfat") sudo -A mount -t vfat "$chosen" "$mp" -o rw,umask=0000;;
+		*) sudo -A mount "$chosen" "$mp"; user="$(whoami)"; ug="$(groups | awk '{print $1}')"; sudo -A chown "$user":"$ug" "$mp";;
+	esac
+	notify-send "💻 USB mounting" "$chosen mounted to $mp."
+	}
+
+mountandroid() { \
+	chosen=$(echo "$anddrives" | $MENU -i -p "Which Android device?" | cut -d : -f 1)
+	getmount "$HOME -maxdepth 3 -type d"
+	simple-mtpfs --device "$chosen" "$mp"
+	notify-send "🤖 Android Mounting" "Android device mounted to $mp."
+	}
+
+mountsftp() { \
+	chosen="$(echo "$sftpdrives" | $MENU -i -p "Mount which drive?")"
+	getmount "/home/faye/mnt -maxdepth 5 -type d $alreadymounted"
+	remotemp="$($MENU -i -p "At what directory?")"
+	notify-send "💻 SFTP mounting"
+	# user="$(whoami)"
+	# ug="$(groups | awk '{print $1}')"
+	# sudo -A SSH_ASKPASS="$SSH_ASKPASS" sshfs -F "$HOME/.ssh/config" "$chosen:$remotemp" $mp; sudo -A chown "$user":"$ug" "$mp"
+	sshfs "$chosen:$remotemp" $mp
+ 	notify-send "$chosen:$remotemp mounted to $mp."
+}
+
+asktype() { \
+	case $(printf "USB\\nAndroid\\nSFTP" | $MENU -i -p "Mount a USB drive or Android device?") in
+		USB) mountusb ;;
+		Android) mountandroid ;;
+		SFTP) mountsftp ;;
+	esac
+	}
+
+anddrives=$(simple-mtpfs -l 2>/dev/null)
+usbdrives="$(lsblk -rpo "name,type,size,mountpoint" | awk '$2=="part"&&$4==""{printf "%s (%s)\n",$1,$3}')"
+sftpdrives=$(sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' $HOME/.ssh/config)
+
+if [ -z "$usbdrives" ]; then
+	if [ -z "$anddrives" ]; then
+		[ -z "$sftpdrives" ] && echo "No USB drive, Android device, or sftp drive detected" && exit
+		echo "SFTP Drive Detected"
+		mountsftp
+	else
+		[ -z "$sftpdrives" ] && echo "Android Device detected" && mountandroid && exit
+		echo "SFTP drive and Android Device detected"
+		asktype
+	fi
+else
+	if [ -z "$anddrives" ]; then
+		[ -z "$sftpdrives" ] && echo "USB drive(s) detected." && mountusb && exit
+		[ -z "$sftpdrives" ] || echo "USB drives and SFTP drives detected"
+		asktype
+	else
+		[ -z "sftpdrives" ] && echo "Mountable USB drive(s), Android device(s), and SFTP devices(s) detected."
+		[ -z "sftpdrives" ] || echo "Mountable USB drive(s) and Android device(s) detected."
+		asktype
+	fi
+fi

@@ -2,7 +2,7 @@
 super + Return
 	$TERMINAL
 super + d
-	dmenu_run
+	$MENU_RUN
 super + r
 	$TERMINAL -e $FILE
 super + e
@@ -16,7 +16,7 @@ super + shift + a
 super + shift + c
 	camtoggle
 super + shift + e
-	tutorialvids
+	rofi -show window
 super + w
 	$TERMINAL -e nmtui
 super + shift + w
@@ -26,7 +26,7 @@ super + shift + g
 super + shift + v
 	$TERMINAL -e $EDITOR -c "VimwikiIndex"
 super + v
-	playvideo $VIDEOS
+	videomenu $VIDEOS
 super + b
 	pickbook $BOOKS
 	# $HOME/.local/bin/i3cmds/blog
@@ -35,9 +35,14 @@ super + alt + t
 super + alt + m
 	$TERMINAL -e ncmpcpp
 super + space
-	pickhmwk $HMWK
+	pickhmwkmenu $HMWK
 super + shift + p
-	picker $HOME
+	pickermenu $HOME
+super + shift + o
+	xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 1; notify-send -t 3600000 "Touchpad While Typing Disabled"; sleep 3600s; xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 0; notify-send "Touchpad While Typing Enabled"
+super + alt + shift + o
+	xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 0; notify-send "Touchpad While Typing Enabled"
+
 
 # Corner Windows
 super + shift + {n,b}
@@ -48,7 +53,7 @@ super + alt + {n,b}
 
 # Et cetera...
 super + grave
-	dmenuunicode
+	menuunicode
 super + Scroll_Lock
 	killall screenkey || screenkey
 super + Insert
@@ -100,10 +105,10 @@ shift + Print
 	maimpick
 # Record audio or video
 super + Print
-	dmenurecord
+	menurecord
 # kill active recording
 super + Delete
-	dmenurecord kill
+	menurecord kill
 
 # Pause audio
 super + {_,shift +} p
@@ -144,7 +149,7 @@ super + F3
 	displayselect
 # Hibernate
 super + F4
-	prompt 'Hibernate computer?' 'sudo systemctl suspend'
+	prompt 'Hibernate computer?' 'sudo zzz'
 # Restart/rescan wifi/eth networks
 super + F5
 	sudo -A systemctl restart NetworkManager
@@ -159,10 +164,10 @@ super + F8
 	mailsync
 # Mount a USB drive or Android device
 super + F9
-	dmenumount
+	menumount
 # Unmount a USB drive or Android device
 super + F10
-	dmenuumount
+	menuumount
 # Search with Duckduckgo
 super + F11
 	ducksearch

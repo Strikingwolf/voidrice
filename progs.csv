@@ -89,3 +89,5 @@ G,https://github.com/lukesmithxyz/st.git,"is my custom build of suckless's termi
 ,sshfs,"Mount Filesystems from the Network"
 ,mosh,"Good SSH frontend drop-in-replacement"
 ,python-dbus,"Useful for some python scripts that require the hooks (ex. University Wi-fi)"
+,rofi,"Nice looking menu! Compatible with PyWal"
+,wal,"Good for customization of colors"
