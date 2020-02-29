@@ -174,40 +174,40 @@ endsnippet
 #endsnippet
 
 
-snippet sympy "sympyblock " w
-sympy $1 sympy$0
-endsnippet
+#snippet sympy "sympyblock " w
+#sympy $1 sympy$0
+#endsnippet
 
-priority 10000
-snippet 'sympy(.*)sympy' "sympy" wr
-`!p
-from sympy import *
-x, y, z, t = symbols('x y z t')
-k, m, n = symbols('k m n', integer=True)
-f, g, h = symbols('f g h', cls=Function)
-init_printing()
-snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
-`
-endsnippet
+#priority 10000
+#snippet 'sympy(.*)sympy' "sympy" wr
+#`!p
+#from sympy import *
+#x, y, z, t = symbols('x y z t')
+#k, m, n = symbols('k m n', integer=True)
+#f, g, h = symbols('f g h', cls=Function)
+#init_printing()
+#snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
+#`
+#endsnippet
 
-priority 1000
-snippet math "mathematicablock" w
-math $1 math$0
-endsnippet
+#priority 1000
+#snippet math "mathematicablock" w
+#math $1 math$0
+#endsnippet
+#
+#priority 10000
+#snippet 'math(.*)math' "math" wr
+#`!p
+#import subprocess
+#code = match.group(1)
+#code = 'ToString[' + code + ', TeXForm]'
+#snip.rv = subprocess.check_output(['wolframscript', '-code', code])
+#`
+#endsnippet
 
-priority 10000
-snippet 'math(.*)math' "math" wr
-`!p
-import subprocess
-code = match.group(1)
-code = 'ToString[' + code + ', TeXForm]'
-snip.rv = subprocess.check_output(['wolframscript', '-code', code])
-`
-endsnippet
-
-snippet == "equals" iA
-&= $1 \\\\
-endsnippet
+#snippet == "equals" iA
+#&= $1 \\\\
+#endsnippet
 
 snippet != "equals" iA
 \neq
@@ -294,37 +294,37 @@ snippet part "d/dx" w
 endsnippet
 
 context "math()"
-snippet sq "\sqrt{}" iA
+snippet sqr "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
-context "math()"
-snippet sr "^2" iA
-^2
-endsnippet
-
-context "math()"
-snippet cb "^3" iA
-^3
-endsnippet
-
-context "math()"
-snippet td "to the ... power" iA
-^{$1}$0
-endsnippet
-
-context "math()"
-snippet rd "to the ... power" iA
-^{($1)}$0
-endsnippet
+#context "math()"
+#snippet sr "^2" iA
+#^2
+#endsnippet
+#
+#context "math()"
+#snippet cb "^3" iA
+#^3
+#endsnippet
+#
+#context "math()"
+#snippet td "to the ... power" iA
+#^{$1}$0
+#endsnippet
+#
+#context "math()"
+#snippet rd "to the ... power" iA
+#^{($1)}$0
+#endsnippet
 
 snippet __ "subscript" iA
 _{$1}$0
 endsnippet
 
-snippet ooo "\infty" iA
-\infty
-endsnippet
+#snippet ooo "\infty" iA
+#\infty
+#endsnippet
 
 snippet rij "mrij" i
 (${1:x}_${2:n})_{${3:$2}\\in${4:\\N}}$0
@@ -463,11 +463,11 @@ snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rw
 endsnippet
 
 
-priority 100
-context "math()"
-snippet -> "to" iA
-\to
-endsnippet
+#priority 100
+#context "math()"
+#snippet -> "to" iA
+#\to
+#endsnippet
 
 priority 200
 context "math()"
@@ -594,9 +594,9 @@ snippet case "cases" wA
 \end{cases}
 endsnippet
 
-snippet SI "SI" iA
-\SI{$1}{$2}
-endsnippet
+#snippet SI "SI" iA
+#\SI{$1}{$2}
+#endsnippet
 
 snippet bigfun "Big function" iA
 \begin{align*}

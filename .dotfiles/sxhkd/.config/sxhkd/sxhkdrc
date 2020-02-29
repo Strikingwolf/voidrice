@@ -42,6 +42,8 @@ super + shift + o
 	xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 1; notify-send -t 3600000 "Touchpad While Typing Disabled"; sleep 3600s; xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 0; notify-send "Touchpad While Typing Enabled"
 super + alt + shift + o
 	xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 0; notify-send "Touchpad While Typing Enabled"
+super + alt + s
+	svmenu
 
 
 # Corner Windows

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+enabled="$(ls -l /run/runit/service/ | awk '{print $9}' | tail -n +2)"
+possiblyenabled="$(ls -l /etc/runit/sv/ | awk '{print $9}')"
+notenabled="$(printf "$possiblyenabled" | grep -F -x -v -e "$enabled")"
+
+case "$(printf "Enable\nDisable\nStart" | $MENU)" in
+	Enable)
+		toenable="$(printf "$notenabled" | $MENU)"
+		[ -z $toenable ] && exit
+		sudo ln -s "/etc/runit/sv/$toenable" "/run/runit/service/$toenable"
+		;;
+	Disable)
+		todisable="$(printf "$enabled" | $MENU)"
+		[ -z $todisable ] && exit
+		sudo rm "/run/runit/service/$todisable"
+		;;
+	Start)
+		tostart="$(printf "$enabled" | $MENU)"
+		[ -z $tostart ] && exit
+		sudo sv start $tostart
+		;;
+	*)
+		exit
+		;;
+esac
+
