@@ -1,5 +1,15 @@
 \DeclareMathOperator{\Mat}{Mat}
 \DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Mult}{Mult}
+\DeclareMathOperator{\rref}{rref}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\trace}{tr}
+
 \newcommand{\linmap}[3]{{}_{#1}[#2]_{#3}}
 
 \makeatletter
@@ -9,3 +19,11 @@
   \array{#1}}
 \makeatother
 
+\newcommand{\twochangebasisdiagram}[9]{
+	{#1} \ar@/^1.5cm/[rrr]^-{{#9}} \ar[r]^-{\Id_{#1}} & {#1} \ar[r]^-{{#9}}  & W \ar[r]^-{\Id_W} & W \\
+	F^{#2} \ar@/_1.5cm/[rrr]_-{\linmap{{#8}}{{#9}}{{#4}}}\ar[u]^-{i_{{#4}}} \ar@{-->}[r]_-{\linmap{{#3}}{\Id_{#1}}{{#4}}} & F^{#2} \ar[u]^-{i_{{#3}}} \ar@{-->}[r]_-{\linmap{{#7}}{#9}{#3}} & F^{#6}\ar[u]_-{i_{{#7}}} \ar@{-->}[r]_-{\linmap{{#8}}{\Id_W}{{#7}}} & F^{#6} \ar[u]_-{i_{{#8}}}
+}
+
+\newcommand{\changebasisdiagram}[5]{
+	\twochangebasisdiagram{#1}{#2}{#3}{#4}{#1}{#2}{#3}{#4}{#5}
+}

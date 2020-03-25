@@ -48,6 +48,12 @@ export MOSH_ESCAPE_KEY="<F13>"
 export MENU="menu"
 export MENU_RUN="menurun"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_DIR="$HOME/.local/share"
+
+export CRONGIT_REPOS="$HOME/Documents/Homework"
+export WEBSITES="$HOME/Documents/Websites"
+
 mpd >/dev/null 2>&1 &
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
@@ -58,5 +64,3 @@ echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx -- :0
 
 # Switch escape and caps if tty:
-sudo -n loadkeys ~/.local/bin/ttymaps.kmap 2>/dev/null
-

@@ -1,0 +1,80 @@
+\newcommand{\graphKThree}{
+	& \bullet \ar@{-}[dr] \ar@{-}[dl]  & \\
+	\bullet \ar@{-}[rr] & & \bullet
+}
+
+\newcommand{\graphKFour}{
+		\bullet \ar@{-}[r] \ar@{-}[dr] \ar@{-}[d] & \bullet \ar@{-}[d] \ar@{-}[dl] \\
+		\bullet \ar@{-}[r] & \bullet
+}
+
+\newcommand{\graphKFive}{
+	&&\bullet \ar@{-}[ddr] \ar@{-}[ddl] \ar@{-}[dll] \ar@{-}[drr] && \\
+   \bullet \ar@{-}[rrrr] \ar@{-}[dr] \ar@{-}[drrr] &&&& \bullet \ar@{-}[dl]\ar@{-}[dlll]  \\
+	&\bullet \ar@{-}[rr]&& \bullet&
+}
+
+\newcommand{\graphKSix}{
+	& \bullet \ar@{-}[r] \ar@{-}[dl] \ar@{-}[dd] \ar@{-}[ddr] \ar@{-}[drr] & \bullet & \\
+	\bullet \ar@{-}[rrr] \ar@{-}[urr] \ar@{-}[dr] \ar@{-}[drr] & & & \bullet \ar@{-}[ul] \\
+															   & \bullet \ar@{-}[r] \ar@{-}[uur] \ar@{-}[urr] & \bullet \ar@{-}[ur] \ar@{-}[uu] &
+}
+
+\newcommand{\graphPeterson}[2]{
+	&& && \textcolor{#1}{\bullet} \ar@{-}[d] \ar@{-}[ddllll] \ar@{-}[ddrrrr] && &&\\
+	&& && \textcolor{#2}{\bullet} \ar@{-}[ddl] \ar@{-}[ddr] && && \\
+	\textcolor{#1}{\bullet} \ar@{-}[rr] \ar@{-}[ddr] && \textcolor{#2}{\bullet} \ar@{-}[rrrr] \ar@{-}[drrr] &&&& \textcolor{#2}{\bullet} && \textcolor{#1}{\bullet} \ar@{-}[ll] \\
+	&&& \textcolor{#2}{\bullet} \ar@{-}[urrr] && \textcolor{#2}{\bullet} &&& \\
+	&\textcolor{#1}{\bullet}  \ar@{-}[urr] \ar@{-}[rrrrrr] &&&&&& \textcolor{#1}{\bullet} \ar@{-}[ull] \ar@{-}[uru]&
+}
+
+\newcommand{\graphKFourPlanar}[1]{
+	\bullet \ar@{-}[r] \ar@{-}[dr] \ar@{-}[d] & \bullet \ar@{-}[d] \ar@/_{#1}/@{-}[dl] \\
+		\bullet \ar@{-}[r] & \bullet
+}
+
+\newcommand{\graphKTwoThree}[2]{
+	 & \textcolor{#1}{\bullet} \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr]& \\
+	\textcolor{#2}{\bullet} & \textcolor{#2}{\bullet} & \textcolor{#2}{\bullet} \\
+	& \textcolor{#1}{\bullet} \ar@{-}[ul] \ar@{-}[u] \ar@{-}[ur]  &
+}
+
+\newcommand{\graphKThreeThree}[2]{
+	\textcolor{#1}{\bullet} \ar@{-}[d] \ar@{-}[dr] \ar@{-}[drr] & \textcolor{#1}{\bullet} \ar@{-}[dl] \ar@{-}[dr] \ar@{-}[d]& \textcolor{#1}{\bullet} \ar@{-}[dll] \ar@{-}[dl] \ar@{-}[d]\\
+	\textcolor{#2}{\bullet} & \textcolor{#2}{\bullet} & \textcolor{#2}{\bullet}
+}
+
+\newcommand{\graphKFourFour}[2]{
+	\textcolor{#1}{\bullet} \ar@{-}[d] \ar@{-}[dr] \ar@{-}[drr] \ar@{-}[drrr] & \textcolor{#1}{\bullet} \ar@{-}[dl] \ar@{-}[dr] \ar@{-}[d] \ar@{-}[drr] & \textcolor{#1}{\bullet} \ar@{-}[dll] \ar@{-}[dl] \ar@{-}[d] \ar@{-}[dr] & \textcolor{#1}{\bullet} \ar@{-}[d] \ar@{-}[dl] \ar@{-}[dll] \ar@{-}[dlll]\\
+	\textcolor{#2}{\bullet} & \textcolor{#2}{\bullet} & \textcolor{#2}{\bullet} & \textcolor{#2}{\bullet}
+}
+
+\newcommand{\graphGenericTree}{
+	& \bullet \ar@{-}[d] & \bullet \ar@{-}[d] & \\
+	\bullet \ar@{-}[r] & \bullet \ar@{-}[r] & \bullet \ar@{-}[r] & \bullet \\
+	& \bullet \ar@{-}[u] & \bullet \ar@{-}[u] &
+}
+
+\newcommand{\graphCubeNet}{
+	\bullet \ar@{-}[dr] \ar@{-}[rrr] \ar@{-}[ddd]& & & \bullet \ar@{-}[dl] \\
+	 & \bullet \ar@{-}[r] & \bullet \ar@{-}[d] & \\
+	 & \bullet \ar@{-}[u]& \bullet \ar@{-}[l] & \\
+	\bullet  \ar@{-}[ur] & & & \bullet\ar@{-}[ul] \ar@{-}[lll] \ar@{-}[uuu]
+}
+
+\newcommand{\graphTriforce}{
+	&& \bullet \ar@{-}[dl] \ar@{-}[dr] && \\
+	&\bullet\ar@{-}[rr] \ar@{-}[dr] && \bullet &\\
+	\bullet \ar@{-}[ur] \ar@{-}[rr] &&\bullet \ar@{-}[ur] && \bullet \ar@{-}[ul] \ar@{-}[ll]
+}
+
+\newcommand{\graphIcosahedral}{\\
+	&&&& &&&& \bullet \ar@{-}[dddd] \ar@{-}[ddddllll] \ar@{-}[ddddrrrr]\ar@/^0.9cm/@{-}[ddddddddrrrrrrrr] \ar@/_0.9cm/@{-}[ddddddddllllllll] &&&& &&&& \\
+		\\\\\\
+		&&&&\bullet \ar@{-}[rrrr] \ar@{-}[drrr] \ar@{-}[ddrr] &&&& \bullet \ar@{-}[dl] \ar@{-}[dr] &&&&\bullet \ar@{-}[llll] \ar@{-}[ddll] \ar@{-}[dlll] &&&& \\
+		&&&& &&&\bullet\ar@{-}[rr] \ar@{-}[dr] && \bullet & && &&&&\\
+		&&&& && \bullet \ar@{-}[ur] \ar@{-}[rr] &&\bullet \ar@{-}[ur] && \bullet \ar@{-}[ul] \ar@{-}[ll]&& &&&&\\
+		\\
+		\bullet \ar@{-}[rruururu] \ar@{-}[rrrrrruu] \ar@{-}[rrrrrrrr] \ar@/_0.75cm/@{-}[rrrrrrrrrrrrrrrr]&&&&	 &&&& \bullet \ar@{-}[uu] \ar@{-}[uull] \ar@{-}[uurr] &&&& &&&& \bullet \ar@{-}[lluululu] \ar@{-}[lllllluu] \ar@{-}[llllllll]
+}
+

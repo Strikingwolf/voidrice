@@ -17,18 +17,20 @@ Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 
 Plug 'sirver/UltiSnips'
+
 Plug 'christoomey/vim-system-copy'
 Plug 'tpope/vim-repeat'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'lervag/vimtex'
-Plug 'christoomey/vim-titlecase'
+" Plug 'christoomey/vim-titlecase'
 Plug 'tpope/vim-dispatch'
 Plug 'KeitaNakamura/tex-conceal.vim'
 Plug 'Konfekt/FastFold'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'dylanaraps/wal.vim'
 
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'ycm-core/YouCompleteMe'
 
@@ -41,20 +43,24 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-let g:vimtex_fold_enabled=1
+
+let g:vimtex_fold_automatic=0
+let g:vimtex_fold_manual=1
+let g:vimtex_fold_enabled=0
 
 set conceallevel=1
 let g:tex_conceal='abdmg'
+hi Conceal ctermbg=none
 
 let g:pandoc#spell#enabled=0
 
 let g:ycm_filetype_blacklist = {'tex': 1}
 let g:ycm_filetype_whitelist = {'cpp': 1, 'hpp': 1}
 
+filetype plugin on
+
 set undofile
 set undodir=$HOME/tmp/vimundo
-
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 set tabstop=4
 set shiftwidth=4
@@ -86,6 +92,7 @@ set clipboard+=unnamedplus
 
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Splits open at the bottom and right, which is not bad, unlike vim defaults.
 	set splitbelow splitright

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 setbg &		# Set the background
+wal -R &
 sxhkd &	# Bind keys
 # Switch to US international with Caps as Mod/Escape
 setxkbmap -option caps:super -variant altgr-intl && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
@@ -13,4 +14,3 @@ xcompmgr &		# xcompmgr for transparency
 dunst &			# dunst for notifications
 mpdupdate &
 numlockx on &
-wal -s -t -R -e &

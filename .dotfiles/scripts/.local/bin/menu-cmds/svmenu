@@ -4,7 +4,7 @@ enabled="$(ls -l /run/runit/service/ | awk '{print $9}' | tail -n +2)"
 possiblyenabled="$(ls -l /etc/runit/sv/ | awk '{print $9}')"
 notenabled="$(printf "$possiblyenabled" | grep -F -x -v -e "$enabled")"
 
-case "$(printf "Enable\nDisable\nStart" | $MENU)" in
+case "$(printf "Enable\nDisable\nStart\nStop\nRestart" | $MENU)" in
 	Enable)
 		toenable="$(printf "$notenabled" | $MENU)"
 		[ -z $toenable ] && exit
@@ -19,6 +19,16 @@ case "$(printf "Enable\nDisable\nStart" | $MENU)" in
 		tostart="$(printf "$enabled" | $MENU)"
 		[ -z $tostart ] && exit
 		sudo sv start $tostart
+		;;
+	Stop)
+		tostop="$(printf "$enabled" | $MENU)"
+		[ -z $tostop ] && exit
+		sudo sv stop $tostop
+		;;
+	Restart)
+		torestart="$(printf "$enabled" | $MENU)"
+		[ -z $torestart ] && exit
+		sudo sv restart $torestart
 		;;
 	*)
 		exit

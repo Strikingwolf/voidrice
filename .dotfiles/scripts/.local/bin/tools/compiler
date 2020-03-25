@@ -12,8 +12,8 @@ base="${file%.*}"
 cd "$dir" || exit
 
 textype() { \
-	command="pdflatex"
-	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
+	command="pdflatex -recorder"
+	( sed 5q "$file" | grep -i -q 'xelatex -recorder' ) && command="xelatex -recorder"
 	runbib=$(grep -i addbibresource "$file")
 	if [ -z $runbib ]
 	then

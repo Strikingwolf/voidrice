@@ -2,6 +2,18 @@
 
 PIDBOI="$$"
 TOOLS="$HOME/.local/bin/tools"
+FLS=$(echo "$1" | sed 's/\.tex/\.fls/')
+OTHER=""
+
+echo $FLS
+
+if [ -e "$FLS" ]
+then
+	OTHER=$(cat "$FLS" | grep 'texinput' | sed 's/INPUT //' | awk '{for (i = 1; i <= NF; i+=2) print $i}' | tr '\n' ' ')
+fi
+
 pgrep -f "/bin/sh $TOOLS/autocomp $1" | grep -v "$PIDBOI" | xargs kill
 pkill -f "entr /bin/sh -c cd $PWD; $TOOLS/compiler $1"
-ls "$1" | entr /bin/sh -c "cd $PWD; $TOOLS/compiler $1" > /dev/null
+echo "$1"
+echo "$OTHER"
+ls "$1" $OTHER | entr /bin/sh -c "cd $PWD; $TOOLS/compiler $1" > /dev/null

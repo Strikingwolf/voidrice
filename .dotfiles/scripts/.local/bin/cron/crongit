@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[ -z $CRONGIT_REPOS ] && exit
+
+notify-send "Running Crongit on Specified Repos"
+
+for repo in $CRONGIT_REPOS
+do
+
+cd $repo
+git add .
+git commit -m "Automatic Cron Commit: $(date)"
+
+done

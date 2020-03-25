@@ -4,10 +4,14 @@
 \newcommand{\theexerAra}{\bf{\arabic{prob}}}
 \newcommand{\theexerAraRom}{\bf{\arabic{prob}\roman{exer}}}
 \newcommand{\theexerAraNew}{\bf{\arabic{exer}}}
+\newcommand{\theexerAraAlphRom}{\bf{\arabic{prob}\alph{subpart}(\roman{exer})}}
+\newcommand{\theexerAraAlphPart}{\bf{\arabic{prob}\alph{subpart}}}
 
 \newcommand{\exAra}{\renewcommand*{\theexer}{\theexerAra}}
 \newcommand{\exAraAlph}{\renewcommand*{\theexer}{\theexerAraAlph}}
 \newcommand{\exAraRom}{\renewcommand*{\theexer}{\theexerAraRom}}
+\newcommand{\exAraAlphRom}{\renewcommand*{\theexer}{\theexerAraAlphRom}}
+\newcommand{\exAraAlphPart}{\renewcommand*{\theexer}{\theexerAraAlphPart}}
 
 \renewcommand*{\theexer}{\theexerAraNew}
 
@@ -15,4 +19,9 @@
 \setcounter{prob}{1}
 \newcommand{\nextprob}{\stepcounter{prob} \setcounter{exer}{0}}
 
+\newcounter{subpart}
+\setcounter{subpart}{1}
+\newcommand{\nextpart}{\stepcounter{subpart}\setcounter{exer}{0}}
+
 \newcommand{\introprob}[1]{\exAra \begin{exer} #1 \end{exer} \exAraAlph \setcounter{exer}{0}}
+\newcommand{\intropart}[1]{\exAraAlphPart \begin{exer} #1 \end{exer} \exAraAlphRom \setcounter{exer}{0}}

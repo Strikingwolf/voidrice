@@ -1,8 +1,8 @@
 #!/bin/bash
 
-file=$(find -L $1 -type f | grep -v -E ".*\.(part|ytdl)\$" | sort | dmenu -i -l 10 | sed 's| |\\\ |g' | sed 's|\[|\\\[|g' | sed 's|\]|\\\]|g')
+file=$(find -L $1 -type f | grep -v -E ".*\.(part|ytdl)\$" | sort | $MENU -i -l 10 | sed 's| |\\\ |g' | sed 's|\[|\\\[|g' | sed 's|\]|\\\]|g')
 
-echo $file
+echo "$file"
 
-[ -z $file ] && exit
+[ -z "$file" ] && exit
 mpv "$file"
