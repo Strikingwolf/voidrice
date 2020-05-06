@@ -30,7 +30,7 @@ Plug 'Konfekt/FastFold'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'dylanaraps/wal.vim'
 
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 Plug 'ycm-core/YouCompleteMe'
 

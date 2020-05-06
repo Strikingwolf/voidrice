@@ -27,6 +27,8 @@ super + shift + v
 	$TERMINAL -e $EDITOR -c "VimwikiIndex"
 super + v
 	videomenu $VIDEOS
+super + ctrl + v
+	pickersyncplay $VIDEOS
 super + b
 	pickbook $BOOKS
 	# $HOME/.local/bin/i3cmds/blog
@@ -44,6 +46,8 @@ super + alt + shift + o
 	xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 0; notify-send "Touchpad While Typing Enabled"
 super + alt + s
 	svmenu
+super + u
+	scratchtermtoggle
 
 
 # Corner Windows

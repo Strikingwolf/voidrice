@@ -24,7 +24,7 @@ export TEX_INPUT="$HOME/.texinput"
 export VIDEOS="$HOME/Media/Videos/"
 export AUDIO="$HOME/Media/Music/"
 export BOOKS="$HOME/Documents/Books/"
-export HMWK="$HOME/Documents/Homework/02-Semester/"
+export HMWK="$HOME/Documents/Homework/03-Semester/"
 export TORRENTS="/var/lib/transmission/Downloads/"
 export DOWNLOADS="$HOME/Downloads/"
 export REPOS="$HOME/Documents/Repos"
@@ -53,6 +53,7 @@ export XDG_DATA_DIR="$HOME/.local/share"
 
 export CRONGIT_REPOS="$HOME/Documents/Homework"
 export WEBSITES="$HOME/Documents/Websites"
+export STEAM_COMMON="$HOME/Games/Steam/steamapps/common"
 
 mpd >/dev/null 2>&1 &
 

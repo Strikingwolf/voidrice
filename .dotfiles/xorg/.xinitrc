@@ -3,5 +3,6 @@
 
 xrdb $HOME/.Xresources
 
+scratchtermrenewal &
+$TERMINAL &
 exec bspwm
-

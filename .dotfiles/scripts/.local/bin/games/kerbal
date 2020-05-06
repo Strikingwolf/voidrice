@@ -1,0 +1,3 @@
+#!/bin/sh
+
+optirun $STEAM_COMMON/Kerbal\ Space\ Program/KSP.x86_64 $argv

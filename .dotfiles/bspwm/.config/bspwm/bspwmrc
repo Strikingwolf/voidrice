@@ -25,4 +25,4 @@ $HOME/.config/polybar/launch.sh &
 
 firefox &
 discord &
-$TERMINAL &
+bspc rule -a scratchterm sticky=on state=floating hidden=on
