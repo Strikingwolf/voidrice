@@ -4,6 +4,7 @@
 #Adds `~/.local/bin/` and all subdirectories to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$PATH:$(du "$HOME/Games/Steam/steamapps/common" --max-depth 1 | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+export PATH="$PATH:$HOME/.config/emacs/bin"
 
 export DISPLAY=:0
 
@@ -65,3 +66,4 @@ echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx -- :0
 
 # Switch escape and caps if tty:
+#wal -R

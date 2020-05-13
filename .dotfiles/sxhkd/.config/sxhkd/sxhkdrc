@@ -6,7 +6,7 @@ super + d
 super + r
 	$TERMINAL -e $FILE
 super + e
-	$TERMINAL -e neomutt
+	emacs
 super + n
 	$TERMINAL -e newsboat
 super + shift + i
