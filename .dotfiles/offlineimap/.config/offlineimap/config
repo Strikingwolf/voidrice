@@ -1,0 +1,42 @@
+[general]
+pythonfile = ~/.config/offlineimap/pass.py
+accounts = Epsilon, UMich
+maxsyncaccounts = 4
+
+[Account UMich]
+localrepository = LocalUMich
+remoterepository = RemoteUMich
+postsynchook = mu index
+
+
+[Repository LocalUMich]
+type = Maildir
+localfolders = ~/Documents/Maildir/UMich
+
+[Repository RemoteUMich]
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = alephnil@umich.edu
+remotepasseval = get_password_emacs("imap.gmail.com", "alephnil@umich.edu", "993")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 1
+
+[Account Epsilon]
+localrepository = LocalEpsilon
+remoterepository = RemoteEpsilon
+postsynchook = mu index
+
+
+[Repository LocalEpsilon]
+type = Maildir
+localfolders = ~/Documents/Maildir/Epsilon
+
+[Repository RemoteEpsilon]
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = justalittleepsilon@gmail.com
+remotepasseval = get_password_emacs("imap.gmail.com", "justalittleepsilon@gmail.com", "993")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 1
