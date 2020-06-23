@@ -15,4 +15,5 @@ xcompmgr &		# xcompmgr for transparency
 dunst &			# dunst for notifications
 mpdupdate &
 numlockx on &
-
+emacs --daemon &
+gpg-agent --daemon &

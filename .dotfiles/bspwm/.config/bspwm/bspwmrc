@@ -15,15 +15,21 @@ bspc rule -a Gimp desktop='^5' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a firefox desktop='^2'
 bspc rule -a discord desktop='^3'
+bspc rule -a irc desktop='^3'
 bspc rule -a mpv state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a Zathura state=tiled
 bspc rule -a Emacs state=tiled
+bspc rule -a flashplayer state=tiled
+bspc rule -a Flashplayer state=tiled
 bspc config border_radius 15
+
+bspc rule -a scratchterm sticky=on state=floating hidden=on
 
 $HOME/.config/polybar/launch.sh &
 
 firefox &
 discord &
-bspc rule -a scratchterm sticky=on state=floating hidden=on
+pidof bspswallow || bspswallow &
+$TERMINAL -c irc -e mosh nikky &

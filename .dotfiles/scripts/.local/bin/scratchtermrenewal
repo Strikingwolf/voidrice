@@ -2,5 +2,5 @@
 
 while :
 do
-$TERMINAL -c scratchterm
+$TERMINAL -c scratchterm -e "fish"
 done

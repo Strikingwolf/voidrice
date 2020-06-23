@@ -10,6 +10,7 @@ export DISPLAY=:0
 
 
 export EDITOR="nvim"
+export VISUAL="emacsclient -create-frame --alternate-editor=''"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
@@ -29,6 +30,7 @@ export HMWK="$HOME/Documents/Homework/03-Semester/"
 export TORRENTS="/var/lib/transmission/Downloads/"
 export DOWNLOADS="$HOME/Downloads/"
 export REPOS="$HOME/Documents/Repos"
+export ORG="$HOME/Documents/org"
 
 export BAT="BAT1"
 

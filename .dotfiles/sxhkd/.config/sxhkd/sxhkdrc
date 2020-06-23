@@ -1,12 +1,12 @@
 # Basic binds
 super + Return
-	$TERMINAL
+	$TERMINAL -e fish
 super + d
 	$MENU_RUN
 super + r
 	$TERMINAL -e $FILE
 super + e
-	emacs
+	emacsclient -create-frame --alternate-editor=""
 super + n
 	$TERMINAL -e newsboat
 super + shift + i
@@ -69,7 +69,7 @@ super + shift + x
 super + shift + BackSpace
 	prompt "Reboot computer?" "sudo -A shutdown -r now"
 super + x
-	mpc pause; pauseallmpv; slock;# xset dpms force off
+	mpc pause; pauseallmpv; sflock -f lucidasans-18 -c "." -b "Little Linux Lesbian Life"
 XF86Launch1
 	xset dpms force off
 XF86AudioMute
@@ -299,3 +299,6 @@ super + !button{1-3}
 
 super + @button{1-3}
   bspc pointer -u
+
+super + shift + r
+	bspc node @parent -R 90

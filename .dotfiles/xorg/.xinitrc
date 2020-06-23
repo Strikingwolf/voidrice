@@ -4,5 +4,5 @@
 xrdb $HOME/.Xresources
 
 scratchtermrenewal &
-$TERMINAL &
+$TERMINAL -e fish &
 exec bspwm

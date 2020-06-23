@@ -1,14 +1,18 @@
 #!/bin/bash
 DIR=$HOME/Media/Pictures/Screenshots
+UPDIR=$HOME/tmp
+UPLOADER=elixiremanager.sh
 
-case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\na selected area (upload)\\ncurrent window (upload)\\nfull screen (upload)" | $MENU -l 6 -i -p "Screenshot which area?")" in
-	"a selected area") maim -s $DIR/pic-selected-"$(date '+%F=%H-%M-%S').png" ;;
-	"current window") maim -i "$(xdotool getactivewindow)" $DIR/pic-window-"$(date '+%F=%H-%M-%S').png" ;;
-	"full screen") maim $DIR/pic-full-"$(date '+%F=%H-%M-%S').png" ;;
+case "$(printf "a selected area (upload)\\ncurrent window (upload)\\nfull screen (upload)\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\na selected area\\ncurrent window\\nfull screen" | $MENU -l 6 -i -p "Screenshot which area?")" in
+	"a selected area (upload)") file="$UPDIR/elixire-$(date +%Y-%m-%dT%H:%M:%S)"; maim -s $file; $UPLOADER $file; exit ;;
+	"current window (upload)") file="$UPDIR/elixire-$(date +%Y-%m-%dT%H:%M:%S)"; maim -i "$(xdotool getactivewindow)" $file; $UPLOADER $file; exit ;;
+	"full screen (upload)") file="$UPDIR/elixire-$(date +%Y-%m-%dT%H:%M:%S)"; maim $file; $UPLOADER $file; exit ;;
 	"a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
 	"current window (copy)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
 	"full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
-	"a selected area (upload)") maim -s | imgur - ;;
-	"current window (upload)") maim -i "$(xdotool getactivewindow)" | imgur - ;;
-	"full screen (upload)") maim | imgur - ;;
+	"a selected area") maim -s $DIR/pic-selected-"$(date '+%F=%H-%M-%S').png" ;;
+	"current window") maim -i "$(xdotool getactivewindow)" $DIR/pic-window-"$(date '+%F=%H-%M-%S').png" ;;
+	"full screen") maim $DIR/pic-full-"$(date '+%F=%H-%M-%S').png" ;;
+	"") exit ;;
 esac
+notify-send "Screenshot Finished!"
