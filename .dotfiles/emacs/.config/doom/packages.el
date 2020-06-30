@@ -55,3 +55,4 @@
 (package! gdscript-mode
           :recipe (:host github
                    :repo "GDQuest/emacs-gdscript-mode"))
+(package! pkgbuild-mode)

@@ -5,7 +5,7 @@ readonly prog_ver="7.0"
 
 #defaults
 readonly apiurl="https://elixi.re/api"
-readonly apikey="$(cat "$HOME/.local/bin/gitrepos/elixiremanager/apikey")"
+readonly apikey="$(cat "$HOME/.local/bin/gitrepos/apikey")"
 mode=area
 wayland=false
 is_admin=""

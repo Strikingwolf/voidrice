@@ -33,7 +33,7 @@ super + b
 	pickbook $BOOKS
 	# $HOME/.local/bin/i3cmds/blog
 super + alt + t
-	placeit $TORRENTS "mv"
+	$TERMINAL -e tremc
 super + alt + m
 	$TERMINAL -e ncmpcpp
 super + space

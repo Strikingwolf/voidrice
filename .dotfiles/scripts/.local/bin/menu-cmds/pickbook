@@ -1,8 +1,8 @@
 #!/bin/bash
 
-file=$(find $1 -type f | grep -E ".*\.(djvu|pdf|epub)\$" | sort | $MENU -i -l 10 | sed 's| |\\\ |g')
+file=$(find $1 -type f | grep -E ".*\.(djvu|pdf|epub|mp3)\$" | sort | $MENU -i -l 10)
 
 echo $file
 
-[ -z $file ] && exit
-zathura "$file"
+[ -z "$file" ] && exit
+xdg-open "$file"

@@ -17,3 +17,4 @@ mpdupdate &
 numlockx on &
 emacs --daemon &
 gpg-agent --daemon &
+transmission-daemon -f --log-error &
