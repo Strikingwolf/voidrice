@@ -32,6 +32,7 @@
 \usepackage{bbm}
 
 \usepackage{graphicx}
+\usepackage{pdfpages}
 
 
 % Basic settings
@@ -41,4 +42,9 @@
 
 \setstretch{1.2}
 
-\newcommand{\TODO}{\textcolor{Red}{\textbf{TODO}}}
+
+\input{$TEX_INPUT/todo.tex}
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
