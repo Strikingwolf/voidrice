@@ -4,7 +4,7 @@ super + Return
 super + d
 	$MENU_RUN
 super + r
-	$TERMINAL -e $FILE
+	reactionmenu $REACTIONS
 super + e
 	emacsclient -create-frame --alternate-editor=""
 super + n
@@ -40,6 +40,8 @@ super + space
 	pickhmwkmenu $HMWK
 super + shift + p
 	pickermenu $HOME
+super + ctrl + r
+	$TERMINAL -e $FILE
 super + shift + o
 	xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 1; notify-send -t 3600000 "Touchpad While Typing Disabled"; sleep 3600s; xinput set-prop "SYNA7DB5:01 06CB:7DB7 Touchpad" 307 0; notify-send "Touchpad While Typing Enabled"
 super + alt + shift + o
@@ -152,7 +154,8 @@ super + F1
 # F2 is restart in i3 right now.
 # Change display
 super + F3
-	displayselect
+	bspc desktop -f '^3'
+	#displayselect
 # Hibernate
 super + F4
 	prompt 'Hibernate computer?' 'sudo zzz'
@@ -234,7 +237,7 @@ super + {p,b,comma,period}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local
+	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -290,15 +293,8 @@ super + alt + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-
-super + button{1-3}
-  bspc pointer -g {move,resize_side,resize_corner}
-
-super + !button{1-3}
-  bspc pointer -t %i %i
-
-super + @button{1-3}
-  bspc pointer -u
-
 super + shift + r
 	bspc node @parent -R 90
+
+super + shift + s
+	bspc config window_gap {0, 12}

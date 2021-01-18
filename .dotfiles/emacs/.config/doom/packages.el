@@ -52,7 +52,7 @@
 (package! geiser)
 (package! org-brain)
 (package! org-download)
-(package! gdscript-mode
-          :recipe (:host github
-                   :repo "GDQuest/emacs-gdscript-mode"))
+; (package! gdscript-mode
+;           :recipe (:host github
+;                    :repo "GDQuest/emacs-gdscript-mode"))
 (package! pkgbuild-mode)

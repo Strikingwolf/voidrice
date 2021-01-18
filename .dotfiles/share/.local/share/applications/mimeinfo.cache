@@ -1,2 +1,4 @@
 [MIME Cache]
+application/uproject=com.epicgames.UnrealEngine.desktop;com.epicgames.UnrealEngineEditor.desktop;com.epicgames.UnrealVersionSelector.desktop;
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop;
 x-scheme-handler/vsls=vsls-launcher.desktop;

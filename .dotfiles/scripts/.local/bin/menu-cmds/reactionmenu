@@ -1,0 +1,14 @@
+#!/bin/bash
+
+file=$(find $1 -type f | sed "s|$1/||" | sort | $MENU -i -l 10 | sed 's| |\\\ |g')
+
+[ -z $file ] && exit
+
+ext="${file##*.}"
+if [ "$ext" == "png" ]; then
+	xclip -selection clipboard -t image/png -i $1/$file
+	notify-send "Copied to clipboard" -i $1/$file
+else
+	echo "$1/$file" | tr -d '\n' | xclip -selection clipboard
+	notify-send "Copied to clipboard" -i $1/$file
+fi

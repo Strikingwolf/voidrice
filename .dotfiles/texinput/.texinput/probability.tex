@@ -5,6 +5,14 @@
   \ifnum\currentgrouptype=16 \else\endgroup\fi
 }
 
+
+\newcommand{\expect}{\mathop{\operatorname{E}}\expectarg}
+\DeclarePairedDelimiterX{\expectarg}[1]{[}{]}{%
+  \ifnum\currentgrouptype=16 \else\begingroup\fi
+  \activatebar#1
+  \ifnum\currentgrouptype=16 \else\endgroup\fi
+}
+
 \newcommand{\innermid}{\nonscript\;\delimsize\vert\nonscript\;}
 \newcommand{\activatebar}{%
   \begingroup\lccode`\~=`\|
@@ -25,4 +33,13 @@
 \def\OptArgSet[#1]#2{\oldset[#1]{#2}}
 \def\NoOptArgSet#1{\OptArgSet[\big]{#1}}
 
-\def\Set{\oldset*}%
+\def\Set{\oldset*}
+
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\corr}{cor}
+
+
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}

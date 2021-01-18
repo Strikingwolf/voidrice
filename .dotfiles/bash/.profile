@@ -15,22 +15,27 @@ export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
 export FILE="lf"
-export BIB="$HOME/Documents/LaTeX/uni.bib"
-export REFER="$HOME/Documents/referbib"
 export SUDO_ASKPASS="$HOME/.local/bin/tools/dmenupass"
 export SSH_ASKPASS=$SUDO_ASKPASS
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 
 export TEX_INPUT="$HOME/.texinput"
-export VIDEOS="$HOME/Media/Videos/"
-export AUDIO="$HOME/Media/Music/"
-export BOOKS="$HOME/Documents/Books/"
-export HMWK="$HOME/Documents/Homework/03-Semester/"
-export TORRENTS="/var/lib/transmission/Downloads/"
-export DOWNLOADS="$HOME/Downloads/"
-export REPOS="$HOME/Documents/Repos"
-export ORG="$HOME/Documents/org"
+export VIDEOS="$HOME/Media/Videos"
+export AUDIO="$HOME/Media/Music"
+export PICTURES="$HOME/Media/Pictures"
+export REACTIONS="$PICTURES/reactions"
+export TORRENTS="/var/lib/transmission/Downloads"
+export DOWNLOADS="$HOME/Downloads"
+
+
+export DOCS="$HOME/Documents"
+export MAILDIR="$DOCS/Maildir"
+export HMWK="$DOCS/Homework"
+export REPOS="$DOCS/Repos"
+export ORG="$DOCS/org"
+export BOOKS="$DOCS/Books"
+export WORK="$DOCS/Work/MathCorps"
 
 export BAT="BAT1"
 
@@ -58,6 +63,10 @@ export CRONGIT_REPOS="$HOME/Documents/Homework"
 export WEBSITES="$HOME/Documents/Websites"
 export STEAM_COMMON="$HOME/Games/Steam/steamapps/common"
 
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+export _JAVA_AWT_WM_NONREPARTENTING=1
+#export LIBGL_ALWAYS_SOFTWARE=1
+
 mpd >/dev/null 2>&1 &
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
@@ -69,3 +78,7 @@ echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc
 
 # Switch escape and caps if tty:
 #wal -R
+if [ -e /home/faye/.nix-profile/etc/profile.d/nix.sh ]; then . /home/faye/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# opam configuration
+test -r /home/faye/.opam/opam-init/init.sh && . /home/faye/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

@@ -7,14 +7,25 @@ browser=${BROWSER:-firefox}
 
 pgrep -x $MENU && exit
 
-choice=$(echo "🦆" | $MENU -i -p "Search DuckDuckGo:") || exit 1
+choice=$(printf "🦆\nnLab" | $MENU -i -p "Search nLab:") || exit 1
 
-if [ "$choice" = "🦆"  ]; then
-    $browser "https://duckduckgo.com"
+if [ "$choice" = "nLab"  ]; then
+	$browser "https://ncatlab.org"
+elif [ "$choice" = "🦆" ]; then
+	choice=$(printf "🦆" | $MENU -i -p "Search DuckDuckGo:") || exit 1
+	if [ "$choice" = "🦆" ]; then
+    	$browser "https://duckduckgo.com"
+	else
+    	if echo "$choice" | grep "^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+\.[a-zA-Z]+(/)?.*$"; then
+        	$browser "$choice"
+    	else
+			$browser "https://duckduckgo.com/?q=$choice&t=ffab&atb=v1-1"
+    	fi
+	fi
 else
     if echo "$choice" | grep "^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+\.[a-zA-Z]+(/)?.*$"; then
         $browser "$choice"
     else
-        $browser "https://duckduckgo.com/?q=$choice&t=ffab&atb=v1-1"
+		$browser "https://duckduckgo.com/?q=$choice site:ncatlab.org&t=ffab&atb=v1-1"
     fi
 fi

@@ -1,14 +1,14 @@
 #!/bin/bash
 
-file=$(find $1 -type f | grep -E ".*\.(djvu|pdf|tex|md)\$" | sort -r | $MENU -i -l 10 | sed 's| |\\\ |g')
+file=$(find $1 -type f | grep -E ".*\.(djvu|pdf|tex|md)\$" | sed "s|$1/||" | sort -r | $MENU -i -l 10 | sed 's| |\\\ |g')
 
 echo $file
 
-[ -z $file ] && exit
+[ -z "$file" ] && exit
 ext="${file##*.}"
 
 if [ "$ext" == "djvu" ] || [ "$ext" == "pdf" ]; then
-	zathura "$file"
+	zathura "$1/$file"
 else
-	$TERMINAL -e $EDITOR $file
+	$TERMINAL -e $EDITOR "$1/$file"
 fi

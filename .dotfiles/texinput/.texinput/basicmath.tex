@@ -90,6 +90,42 @@
 	\right.
 }
 
+\newcommand{\threedefo}[5]
+{
+	\left\{
+		\begin{array}{lll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{otherwise}
+		\end{array}
+	\right.
+}
+
+\newcommand{\fourdef}[8]
+{
+	\left\{
+		\begin{array}{llll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6 \\
+			#7 & \mbox{if } #8
+		\end{array}
+	\right.
+}
+
+\newcommand{\fourdefo}[7]
+{
+	\left\{
+		\begin{array}{llll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6 \\
+			#7 & \mbox{otherwise}
+		\end{array}
+	\right.
+}
+
+
 
 \newcommand{\0}{\emptyset}
 \newcommand{\ifft}{if and only if }
@@ -140,3 +176,5 @@
 \DeclareMathOperator{\range}{range}
 
 \newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\baru}[1]{\text{\b{$#1$}}}

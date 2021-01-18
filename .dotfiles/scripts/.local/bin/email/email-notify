@@ -1,0 +1,13 @@
+#!/bin/bash
+cd $MAILDIR
+for d in *; do
+    if [ -d "$d" ] && [ "$d" != "archive" ]; then
+        # Will not run if no directories are available
+        echo "Watching $d/INBOX/new"
+		while curmail=$(inotifywait -qe MOVED_TO --format '%f' -- "$d/INBOX/new")
+		do
+			echo $curmail
+			mailpop "$MAILDIR/$d/INBOX/new/$curmail" $d
+		done&
+    fi
+done

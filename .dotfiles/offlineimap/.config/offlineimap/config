@@ -1,12 +1,12 @@
 [general]
 pythonfile = ~/.config/offlineimap/pass.py
-accounts = Epsilon, UMich
+accounts = Epsilon, UMich, MathCorps
 maxsyncaccounts = 4
 
 [Account UMich]
 localrepository = LocalUMich
 remoterepository = RemoteUMich
-postsynchook = mu index
+postsynchook = pkill mu; mu index
 
 
 [Repository LocalUMich]
@@ -25,7 +25,7 @@ maxconnections = 1
 [Account Epsilon]
 localrepository = LocalEpsilon
 remoterepository = RemoteEpsilon
-postsynchook = mu index
+postsynchook = pkill mu; mu index
 
 
 [Repository LocalEpsilon]
@@ -37,6 +37,25 @@ type = IMAP
 remotehost = imap.gmail.com
 remoteuser = justalittleepsilon@gmail.com
 remotepasseval = get_password_emacs("imap.gmail.com", "justalittleepsilon@gmail.com", "993")
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+maxconnections = 1
+
+[Account MathCorps]
+localrepository = LocalMathCorps
+remoterepository = RemoteMathCorps
+postsynchook = pkill mu; mu index
+
+
+[Repository LocalMathCorps]
+type = Maildir
+localfolders = ~/Documents/Maildir/MathCorps
+
+[Repository RemoteMathCorps]
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = fjackson@mathcorps.org
+remotepasseval = get_password_emacs("imap.gmail.com", "fjackson@mathcorps.org", "993")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 maxconnections = 1

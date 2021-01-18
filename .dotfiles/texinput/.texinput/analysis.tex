@@ -5,3 +5,110 @@
 \newcommand{\unif}{\xrightarrow{unif.}}
 \newcommand{\ptwise}{\xrightarrow{ptwise.}}
 \newcommand{\ball}[2]{\mathcal{B}_{#1}\left(#2\right)}
+\DeclareMathOperator{\osc}{osc}
+\DeclareMathOperator{\diam}{diam}
+
+\pgfdeclarelayer{left}
+\pgfdeclarelayer{right}
+\pgfdeclarelayer{plot}
+\pgfsetlayers{main, right, left, plot}
+\tikzset{
+  pics/riemann sum/.style args={#1:#2:#3}{
+    code={
+      \pgfmathsetmacro{\leftpoint}{#1}
+      \pgfmathsetmacro{\rightpoint}{#2}
+      \pgfmathsetmacro{\movecount}{#3}
+      \pgfmathsetmacro{\step}{(\rightpoint-\leftpoint)/\movecount}
+      \begin{scope}[local bounding box=riemann]
+      \foreach \i [count=\c from 0] in {1,...,\movecount} {
+        \pgfonlayer{left}
+        \path[riemann sum/left sum] (\leftpoint+\c*\step, {temp(\leftpoint+\c*\step)}) rectangle (\leftpoint+\i*\step, 0);
+        \endpgfonlayer
+        \pgfonlayer{right}
+        \path[riemann sum/right sum] (\rightpoint-\c*\step, {temp(\rightpoint-\c*\step)}) rectangle (\rightpoint-\i*\step, 0);
+        \endpgfonlayer
+      }
+      \pgfonlayer{plot}
+      \draw [domain=#1:#2, riemann sum/riemann line] plot (\x, {temp(\x)});
+      \endpgfonlayer
+      \end{scope}
+      \draw[->, riemann sum/riemann axis] ([xshift=-5mm]riemann.west) -- ([xshift=5mm]riemann.east);
+      \draw[->, riemann sum/riemann axis] ([yshift=-5mm]riemann.south) -- ([yshift=5mm]riemann.north);
+    }
+  },
+  riemann sum/.search also=/tikz,
+  riemann sum/.cd,
+  function/.style 2 args={declare function={temp(#1)=#2;}},
+  left sum/.style={draw},
+  right sum/.style={draw},
+  riemann line/.style={},
+  riemann axis/.style={},
+  left/.style={left sum/.append style={#1}},
+  right/.style={right sum/.append style={#1}},
+  line/.style={riemann line/.append style={#1}},
+  axis/.style={riemann axis/.append style={#1}}
+}
+\newcommand{\riemannsum}[2][-1:1:2]{\pic[riemann sum/.cd,#2] {riemann sum=#1};}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{
+    integral segments/.code={\pgfmathsetmacro\integralsegments{#1}},
+    integral segments=3,
+    integral samples/.code={\edef\integralsamples{#1}},
+    integral samples = 10,
+    integral min/.style args={#1:#2}{
+        ybar interval,
+        domain=#1:#2,
+        samples=\integralsegments+1,
+        x filter/.code={
+                               \edef\lastx{\pgfmathresult}
+                                \pgfmathresult
+                              },%
+        y filter/.code={%
+                          \pgfmathparse{(#2/(\integralsegments))/\integralsamples}%
+                           \edef\tempstep{\pgfmathresult}%
+                            \pgfmathparse{f(\lastx)}%
+                            \edef\tempa{\pgfmathresult}%
+                            \edef\tempb{\pgfmathresult}%
+                            \foreach \x in {0,1,...,\integralsamples}%
+                               {%
+                                \pgfmathparse{f(\lastx+\x*\tempstep)}%
+                                 \xdef\tempb{\tempb,\pgfmathresult}%
+                                 }%
+                               \pgfmathmin{\tempb}{\tempb}
+                             },
+    },
+    integral max/.style args={#1:#2}{
+        ybar interval,
+        domain=#1:#2,
+        samples=\integralsegments+1,
+        x filter/.code={
+                               \edef\lastx{\pgfmathresult}
+                                \pgfmathresult
+                              },%
+        y filter/.code={%
+                          \pgfmathparse{(#2/(\integralsegments))/\integralsamples}%
+                           \edef\tempstep{\pgfmathresult}%
+                            \pgfmathparse{f(\lastx)}%
+                            \edef\tempa{\pgfmathresult}%
+                            \edef\tempb{\pgfmathresult}%
+                            \foreach \x in {0,1,...,\integralsamples}%
+                               {%
+                                \pgfmathparse{f(\lastx+\x*\tempstep)}%
+                                 \xdef\tempb{\tempb,\pgfmathresult}%
+                                 }%
+                               \pgfmathmax{\tempb}{\tempb}
+                             },
+    },
+}
+\makeatletter
+%see https://tex.stackexchange.com/questions/9722/why-am-i-getting-the-pgf-math-error-unknown-function-getargs
+\def\pgfmathmax#1#2{%
+%   \pgfmathparse{getargs(#1,#2)}%
+     \pgfmathparse{#1,#2}%
+    \expandafter\pgfmathmax@\expandafter{\pgfmathresult}%
+}
+\def\pgfmathmin#1#2{%
+    \pgfmathparse{#1,#2}%
+    \expandafter\pgfmathmin@\expandafter{\pgfmathresult}%
+}

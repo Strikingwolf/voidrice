@@ -8,6 +8,8 @@
 (setq user-full-name "Faye Jackson"
       user-mail-address "justalittleepsilon@gmail.com")
 
+(setq home-dir "/home/faye/")
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -150,8 +152,12 @@
     (mu4e-sent-folder "/Epsilon/[Gmail].Sent Mail")
     (mu4e-drafts-folder "/Epsilon/[Gmail].Drafts")
     (user-mail-address "justalittleepsilon@gmail.com")
-    (smtpmail-smtp-user "justalittleepsilon@gmail.com")
-    )))
+    (smtpmail-smtp-user "justalittleepsilon@gmail.com"))
+    ("MathCorps"
+    (mu4e-sent-folder "/MathCorps/[Gmail].Sent Mail")
+    (mu4e-drafts-folder "/MathCorps/[Gmail].Drafts")
+    (user-mail-address "fjackson@mathcorps.org")
+    (smtpmail-smtp-user "fjackson@mathcorps.org"))))
 
 (defun my-mu4e-set-account ()
  "Set the account for composing a message."
@@ -172,93 +178,123 @@
              account-vars)
      (error "No email account found"))))
 
-(after! mu4e
-  (setq mu4e-maildir (expand-file-name "~/Maildir"))
+;(defun draft-auto-save-buffer-name-handler (operation &rest args)
+;  "for `make-auto-save-file-name' set '.' in front of the file name; do nothing for other operations"
+;  (if
+;      (and buffer-file-name (eq operation 'make-auto-save-file-name))
+;      (concat (file-name-directory buffer-file-name)
+;              "."
+;              (file-name-nondirectory buffer-file-name))
+;    (let ((inhibit-file-name-handlers
+;            (cons 'draft-auto-save-buffer-name-handler
+;                  (and (eq inhibit-file-name-operation operation)
+;                      inhibit-file-name-handlers)))
+;          (inhibit-file-name-operation operation))
+;      (apply operation args))))
+;
+;(dolist (elt my-mu4e-account-alist)
+;  (let ((path (string-join (list mu4e-maildir (car elt) "[Gmail].Drafts/cur/*"))))
+;    (add-to-list 'file-name-handler-alist
+;                 `(,path . draft-auto-save-buffer-name-handler))))
 
-  (setq mu4e-drafts-folder "/UMich/[Gmail].Drafts")
-  (setq mu4e-sent-folder   "/UMich/[Gmail].Sent Mail")
-  (setq mu4e-trash-folder  "/UMich/[Gmail].Trash")
+; (add-to-list 'file-name-handler-alist `(,path . draft-auto-save-buffer-name-handler))))
 
-  ;; don't save message to Sent Messages, GMail/IMAP will take care of this
-  (setq mu4e-sent-messages-behavior 'delete)
+(use-package! mu4e
+  :init
+  (progn ;(setq mu4e-maildir (expand-file-name "~/Documents/Maildir"))
+         (setq mu4e-get-mail-command "offlineimap")
+         (setq mu4e-drafts-folder "/UMich/[Gmail].Drafts")
+         (setq mu4e-sent-folder   "/UMich/[Gmail].Sent Mail")
+         (setq mu4e-trash-folder  "/UMich/[Gmail].Trash")
+         (setq mu4e-sent-messages-behavior 'delete)
+         (setq mu4e-maildir-shortcuts
+               '(("/UMich/INBOX"             . ?i)
+                 ("/UMich/[Gmail].Sent Mail" . ?s)
+                 ("/UMich/[Gmail].Trash"     . ?t)
+                 ("/UMich/[Gmail].Starred"   . ?f)
+                 ("/Epsilon/INBOX"           . ?p)
+                 ("/MathCorps/INBOX"         . ?m)))
+         ;; allow for updating mail using 'U' in the main view:
+         ;; something about ourselves
+         ;; I don't use a signature...
+         (setq
+          user-mail-address "alephnil@umich.edu"
+          user-full-name  "Faye Jackson"
+          message-signature ""))
+  :config
+  (progn
+         (setq mu4e-drafts-folder "/UMich/[Gmail].Drafts")
+         (setq mu4e-sent-folder   "/UMich/[Gmail].Sent Mail")
+         (setq mu4e-trash-folder  "/UMich/[Gmail].Trash")
+         (setq mu4e-sent-messages-behavior 'delete)
+         (setq mu4e-maildir-shortcuts
+               '(("/UMich/INBOX"             . ?i)
+                 ("/UMich/[Gmail].Sent Mail" . ?s)
+                 ("/UMich/[Gmail].Trash"     . ?t)
+                 ("/UMich/[Gmail].Starred"   . ?f)
+                 ("/Epsilon/INBOX"           . ?p)
+                 ("/MathCorps/INBOX"         . ?m)))
+         (setq
+          user-mail-address "alephnil@umich.edu"
+          user-full-name  "Faye Jackson"
+          message-signature "")
+         (setq mu4e-get-mail-command "offlineimap")
+         (add-hook 'mu4e-mark-execute-pre-hook
+                   (lambda (mark msg)
+                     (cond ((member mark '(refile trash)) (mu4e-action-retag-message msg "-\\Inbox"))
+                           ((equal mark 'flag) (mu4e-action-retag-message msg "\\Starred"))
+                           ((equal mark 'unflag) (mu4e-action-retag-message msg "-\\Starred")))))
 
-  ;; setup some handy shortcuts
-  (setq mu4e-maildir-shortcuts
-        '(("/UMich/INBOX"             . ?i)
-          ("/UMich/[Gmail].Sent Mail" . ?s)
-          ("/UMich/[Gmail].Trash"     . ?t)))
-
-  ;; allow for updating mail using 'U' in the main view:
-  (setq mu4e-get-mail-command "offlineimap")
-
-  ;; something about ourselves
-  ;; I don't use a signature...
-  (setq
-  user-mail-address "alephnil@umich.edu"
-  user-full-name  "Faye Jackson"
-  message-signature "")
-
-  (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
-  (add-hook 'mu4e-compose-mode-hook #'(lambda () (auto-save-mode -1)))
-  (setq mu4e-sent-messages-behavior 'delete)
-  (defun draft-auto-save-buffer-name-handler (operation &rest args)
-    "for `make-auto-save-file-name' set '.' in front of the file name; do nothing for other operations"
-    (if
-        (and buffer-file-name (eq operation 'make-auto-save-file-name))
-        (concat (file-name-directory buffer-file-name)
-                "."
-                (file-name-nondirectory buffer-file-name))
-      (let ((inhibit-file-name-handlers
-             (cons 'draft-auto-save-buffer-name-handler
-                   (and (eq inhibit-file-name-operation operation)
-                        inhibit-file-name-handlers)))
-            (inhibit-file-name-operation operation))
-        (apply operation args))))
-  (add-to-list 'file-name-handler-alist '("/Epsilon/[Gmail].Drafts/cur/" . draft-auto-save-buffer-name-handler))
-  (add-to-list 'file-name-handler-alist '("/UMich/[Gmail].Drafts/cur/" . draft-auto-save-buffer-name-handler)))
-
-(add-hook 'mu4e-view-mode-hook
-  (lambda()
-    ;; try to emulate some of the eww key-bindings
-    (local-set-key (kbd "<RET>") 'mu4e~view-browse-url-from-binding)
-    (local-set-key (kbd "<tab>") 'shr-next-link)
-    (local-set-key (kbd "<backtab>") 'shr-previous-link)))
+         (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+         (add-hook 'mu4e-compose-mode-hook #'(lambda () (auto-save-mode -1)))
+         (add-hook 'mu4e-view-mode-hook
+                   (lambda()
+                     ;; try to emulate some of the eww key-bindings
+                     (local-set-key (kbd "<RET>") 'mu4e~view-browse-url-from-binding)
+                     (local-set-key (kbd "<tab>") 'shr-next-link)
+                     (local-set-key (kbd "<backtab>") 'shr-previous-link)))
+         (define-key mu4e-view-mode-map (kbd "J") 'mu4e~headers-jump-to-maildir)
+         (define-key mu4e-view-mode-map (kbd "j") 'evil-next-line)
+         (define-key mu4e-view-mode-map (kbd "k") 'evil-previous-line)
+         (define-key mu4e-view-mode-map (kbd "h") 'evil-backward-char)
+         (define-key mu4e-view-mode-map (kbd "C-M-h") 'mu4e-view-toggle-html)
+         (define-key mu4e-view-mode-map (kbd "k") 'evil-previous-line)))
 
 ;; Org Mode Configuration
 
 (setq org-export-in-background t)
 
-(after! org
-  (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup)
-  (setq org-todo-keywords  '((sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
-        org-todo-keyword-faces
-        '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-          ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
-          ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
-          ("DONE" :foreground "#50a14f" :weight normal :underline t)
-          ("CANCELLED" :foreground "#ff6480" :weight normal :underline t))
-        org-agenda-files (list "~/Documents/org/journal.org" "~/Documents/org/todo.org")
-        )
-   (add-hook 'org-mode-hook
-             (lambda ()
-               (add-hook 'after-save-hook (lambda () (org-latex-export-to-pdf t)) nil 'make-it-local))) ;
-  )
+(use-package! org
+  :config
+  (progn (map! :map org-mode-map
+               :n "M-j" #'org-metadown
+               :n "M-k" #'org-metaup)
+         (setq org-todo-keywords  '((sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
+               org-todo-keyword-faces
+               '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
+                 ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
+                 ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
+                 ("DONE" :foreground "#50a14f" :weight normal :underline t)
+                 ("CANCELLED" :foreground "#ff6480" :weight normal :underline t))
+               org-agenda-files (list "~/Documents/org/journal.org" "~/Documents/org/todo.org")
+               )
+         (add-hook 'org-mode-hook
+                   (lambda ()
+                     (add-hook 'after-save-hook (lambda () (org-latex-export-to-pdf t)) nil 'make-it-local)))))
 
 (add-hook 'pdf-view-mode-hook 'auto-revert-mode)
 
 ;; Haskell Config
 
 (add-hook 'dante-mode-hook
-   '(lambda () (flycheck-add-next-checker 'haskell-dante
-                                     '(warning . haskell-hlint))))
+          '(lambda () (flycheck-add-next-checker 'haskell-dante
+                                                 '(warning . haskell-hlint))))
 
 (map! :leader :desc "Org Brain" "v" #'org-brain-visualize)
 
 ;; Org-Brain
 
-(after! org-brain
+(use-package! org-brain
   :init
   ;; For Evil users
   (with-eval-after-load 'evil (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
@@ -276,7 +312,16 @@
         org-brain-file-entries-use-title nil
         org-brain-headline-entry-name-format-string "%2$s"))
 
-(require 'gdscript-mode)
+(use-package! latex
+  :init
+  (add-hook 'latex-mode-hook
+            (lambda ()
+              (LaTeX-math-mode)
+              (message "Meow")
+              (add-hook! 'after-save-hook (lambda ()
+                                            (TeX-command-sequence t t)) nil 'make-it-local))))
+
+; (require 'gdscript-mode)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -289,3 +334,35 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setq twelf-root "/opt/twelf/")
+(load (concat twelf-root "emacs/twelf-init.el"))
+
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (init (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string))))
+
+(require 'subr-x)
+
+(defun my-open-calendar ()
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    (cfw:org-create-source "Red")  ; org-agenda source
+    (cfw:org-create-file-source "gcal" "~/Documents/org/calendar/events.org" "Pink")  ; other org source
+    (cfw:org-create-file-source "gcal" "~/Documents/org/calendar/school.org" "Blue")
+    (cfw:cal-create-source "Green") ; diary source
+    )))
+
+(map! :map doom-leader-map :desc "Open Calendar" "o c" #'my-open-calendar)
+
+(use-package! org-gcal
+  :config
+  (setq org-gcal-client-id "458524695590-vlvcdj33jcudskh62mki4kemnj1bsshm.apps.googleusercontent.com"
+      org-gcal-client-secret "YwUoQ4K2RV8tSHPAdgiseDtL"
+      org-gcal-fetch-file-alist '(("alephnil@umich.edu" .  "~/Documents/org/calendar/events.org")
+                                  ("umich.edu_7doq2utmah9ocjgoq1umfn9a7k@group.calendar.google.com" .  "~/Documents/org/calendar/school.org")
+                                  ("umich.edu_m0k2pvd2ldvicd71tfknin7854@group.calendar.google.com" . "~/Documents/org/calendar/exams.org"))))

@@ -33,6 +33,7 @@ Plug 'dylanaraps/wal.vim'
 " Plug 'sheerun/vim-polyglot'
 
 Plug 'ycm-core/YouCompleteMe'
+Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
 
 call plug#end()
 

@@ -1,3 +1,4 @@
 [Default Applications]
 application/uproject=com.epicgames.UnrealVersionSelector.desktop;com.epicgames.UnrealEngine.desktop;com.epicgames.UnrealEngineEditor.desktop
 application/octet-stream=mpv.desktop
+application/postscript=ps.desktop
