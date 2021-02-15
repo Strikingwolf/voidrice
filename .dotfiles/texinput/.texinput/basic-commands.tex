@@ -1,0 +1,131 @@
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\C}{\mathbbf{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\SBB}{\mathbb{S}}
+\newcommand{\VV}{\mathbb{V}}
+
+
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\ps}{\mathcal{P}}
+\newcommand{\twodef}[4]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4
+		\end{array}
+	\right.
+}
+\newcommand{\twodefo}[3]
+{
+	\left\{
+		\begin{array}{ll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{otherwise }
+		\end{array}
+	\right.
+}
+
+\newcommand{\threedef}[6]
+{
+	\left\{
+		\begin{array}{lll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6
+		\end{array}
+	\right.
+}
+
+\newcommand{\threedefo}[5]
+{
+	\left\{
+		\begin{array}{lll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{otherwise}
+		\end{array}
+	\right.
+}
+
+\newcommand{\fourdef}[8]
+{
+	\left\{
+		\begin{array}{llll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6 \\
+			#7 & \mbox{if } #8
+		\end{array}
+	\right.
+}
+
+\newcommand{\fourdefo}[7]
+{
+	\left\{
+		\begin{array}{llll}
+			#1 & \mbox{if } #2 \\
+			#3 & \mbox{if } #4 \\
+			#5 & \mbox{if } #6 \\
+			#7 & \mbox{otherwise}
+		\end{array}
+	\right.
+}
+
+
+
+\newcommand{\0}{\emptyset}
+\newcommand{\ifft}{if and only if }
+\newcommand{\sided}[2]{\begin{itemize}
+							\item[($\Rightarrow$)] #1
+							\item[($\Leftarrow$)] #2
+				\end{itemize}}
+\newcommand{\sidedi}[2]{\begin{itemize}
+							\item[($\Leftarrow$)] #1
+							\item[($\Rightarrow$)] #2
+				\end{itemize}}
+\newcommand{\twowaycont}[2]{\begin{itemize}
+		\item[($\subseteq$)] #1
+		\item[($\supseteq$)] #2
+				\end{itemize}}
+\newcommand{\twowayconti}[2]{\begin{itemize}
+		\item[($\supseteq$)] #1
+		\item[($\subseteq$)] #2
+				\end{itemize}}
+\newcommand{\al}{\alpha}
+\renewcommand*{\st}{\;\vert\;}
+\newcommand{\g}{\gamma}
+
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Ima}{Im}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Iso}{Iso}
+
+\newcommand{\parens}[1]{\left(#1\right)}
+
+\newcommand{\ld}{\left}
+\newcommand{\rd}{\right}
+
+\newcommand{\inc}[1]{\xhookrightarrow{#1}}
+\newcommand{\iso}{\cong}
+
+\newcommand{\rest}[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+
+\renewcommand{\bar}[1]{\overline{#1}}
+
+\DeclareMathOperator{\range}{range}
+
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\baru}[1]{\text{\b{$#1$}}}

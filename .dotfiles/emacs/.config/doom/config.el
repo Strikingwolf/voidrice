@@ -199,6 +199,20 @@
 
 ; (add-to-list 'file-name-handler-alist `(,path . draft-auto-save-buffer-name-handler))))
 
+(use-package! org-msg
+  :config
+  (progn
+    (setq org-msg-options "html-postamble:nil H:5 num:nil ^:{} toc:nil author:nil email:nil \\n:t"
+	org-msg-startup "hidestars indent inlineimages"
+	org-msg-default-alternatives '(text html)
+	org-msg-convert-citation t
+	org-msg-signature "
+#+begin_signature
+~ Faye \\
+#+end_signature")
+    (org-msg-mode))
+  )
+
 (use-package! mu4e
   :init
   (progn ;(setq mu4e-maildir (expand-file-name "~/Documents/Maildir"))
