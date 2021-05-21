@@ -15,6 +15,7 @@ bspc rule -a Gimp desktop='^5' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a firefox desktop='^2'
 bspc rule -a discord desktop='^3'
+bspc rule -a zulip desktop='^5'
 bspc rule -a irc desktop='^3'
 bspc rule -a Zotero desktop='^4'
 bspc rule -a mpv state=floating
@@ -38,3 +39,4 @@ discord &
 $TERMINAL -c irc -e mosh nikky &
 zotero &
 wmname LG3D &
+zulip &

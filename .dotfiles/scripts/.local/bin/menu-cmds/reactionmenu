@@ -8,6 +8,9 @@ ext="${file##*.}"
 if [ "$ext" == "png" ]; then
 	xclip -selection clipboard -t image/png -i $1/$file
 	notify-send "Copied to clipboard" -i $1/$file
+elif [ "$ext" == "txt" ]; then
+	xclip -selection clipboard $1/$file
+	notify-send "Copied to clipboard: $file"
 else
 	echo "$1/$file" | tr -d '\n' | xclip -selection clipboard
 	notify-send "Copied to clipboard" -i $1/$file

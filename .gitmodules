@@ -3,4 +3,4 @@
 	url = https://github.com/adi1090x/polybar-themes
 [submodule ".dotfiles/texinput/.texinput/wen-preamble"]
 	path = .dotfiles/texinput/.texinput/wen-preamble
-	url = git@gitlab.com:weznon/preamble.git
+	url = git@gitlab.com:fayealeph/preamble.git

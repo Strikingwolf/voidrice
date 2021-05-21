@@ -1,0 +1,26 @@
+#!/bin/bash
+
+for file in $REACTIONS/**/*.jpg
+do
+	[ "$file" != "$REACTIONS/**/*.jpg" ] || break
+	echo $file
+	convert $file ${file/\.jpg/\.png}
+	rm $file
+done
+
+for file in $REACTIONS/**/*.webp
+do
+	[ "$file" != "$REACTIONS/**/*.webp" ] || break
+	echo $file
+	convert $file ${file/\.webp/\.png}
+	rm $file
+done
+
+for file in $REACTIONS/**/*.mp4
+do
+	[ "$file" != "$REACTIONS/**/*.mp4" ] || break
+	echo $file
+	gifify $file > ${file/\.mp4/\.gif}
+	rm $file
+done
+

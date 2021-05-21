@@ -1,6 +1,7 @@
 #!/bin/bash
 
-file=$(find $1 -type f | grep -E ".*\.(djvu|pdf|tex|md)\$" | sed "s|$1/||" | sort -r | $MENU -i -l 10 | sed 's| |\\\ |g')
+file=$(find $1 -type f  -not -path "*/latex.out/*" -not -path "*template-notes.tex" | grep -E ".*\.(djvu|pdf|tex|md)\$" | sed "s|$1/||" | sort -r | $MENU -i -l 10 | sed 's| |\\\ |g')
+
 
 echo $file
 

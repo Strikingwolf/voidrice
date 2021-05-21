@@ -40,6 +40,7 @@ export WORK="$DOCS/Work/MathCorps"
 export BAT="BAT1"
 
 export XDG_CURRENT_DESKTOP="bspwm"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # less/man colors
 export LESS=-R

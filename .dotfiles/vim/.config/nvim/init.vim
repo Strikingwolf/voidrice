@@ -1,4 +1,5 @@
 let mapleader =","
+set shell=/bin/fish
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."

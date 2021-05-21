@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/Games/Reborn
+./mkxp-z-x86_64.AppImage

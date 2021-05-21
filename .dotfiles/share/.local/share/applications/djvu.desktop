@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=DJVU reader
+Exec=zathura %u

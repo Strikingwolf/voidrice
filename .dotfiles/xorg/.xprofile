@@ -35,4 +35,5 @@ mpdupdate &
 numlockx on &
 emacs --daemon &
 transmission-daemon -f --log-error &
+pulseeffects --gapplication-service &
 
