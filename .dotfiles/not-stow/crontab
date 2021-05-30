@@ -1,0 +1,11 @@
+0 */1 * * * export DISPLAY=:0; /home/faye/.local/bin/cron/checkup
+
+*/5 * * * * export DISPLAY=:0; /home/faye/.local/bin/cron/cronbat
+
+0 */1 * * * export DISPLAY=:0; /home/faye/.local/bin/cron/newsup
+
+*/30 * * * * task sync
+
+* */1 * * * export DISPLAY=:0; /home/faye/.local/bin/cron/crongit &> /home/faye/crongit.log
+
+*/5 * * * * export DISPLAY=:0; offlineimap update
